@@ -52,7 +52,7 @@ client.on("ready", () => {
     client.on('guildMemberAdd', async(member) => { // this event gets triggered when a new member joins the server!
 
         const Channels = member.guild.channels.cache.get('798631082182180874') //insert channel id that you want to send to
-        /*const canvas = Canvas.createCanvas(900, 250);
+        const canvas = Canvas.createCanvas(900, 250);
         const ctx = canvas.getContext('2d');
         
             
@@ -61,6 +61,10 @@ client.on("ready", () => {
             
             ctx.strokeStyle = '#74037b';
             ctx.strokeRect(0, 0, canvas.width, canvas.height);
+
+            ctx.font = '60px sans-serif';
+            ctx.fillStyle = '#ffffff';
+            ctx.fillText(`Kamu Adalah Murid Ke ${member.guild.memberCount}`, canvas.width / 3.0, canvas.height / 1.8);
 
             ctx.font = '60px sans-serif';
             ctx.fillStyle = '#ffffff';
@@ -81,15 +85,15 @@ client.on("ready", () => {
                         .setImage("attachment://welcome-image.png")
                         .attachFiles(attachment)
                         .setTimestamp()
-                        .setFooter(`Kamu Member Ke ${member.guild.memberCount}`)*/
+                        .setFooter(`Kamu Member Ke ${member.guild.memberCount}`)
 
-                        let data = await canva.welcome(member, { link: "https://wallpapercave.com/wp/wp5128415.jpg" })
+                        /*let data = await canva.welcome(member, { link: "https://wallpapercave.com/wp/wp5128415.jpg" })
  
                         const attachment = new MessageAttachment(data,"welcome-image.png"
                         );
                     
                         Channels.send(`Welcome to the server, <@${member.user.id}>!`,`${member.guild.memberCount}`,attachment
-                        );   
+                        );*/
 
             })
 
