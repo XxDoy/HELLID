@@ -95,6 +95,8 @@ client.on("ready", () => {
                         Channels.send(`Welcome to the server, <@${member.user.id}>!`,`${member.guild.memberCount}`,attachment
                         );*/
 
+                        Channels.send(embed)
+
             })
 
         client.on('guildMemberRemove', async(member) =>{
