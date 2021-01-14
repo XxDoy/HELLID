@@ -62,11 +62,11 @@ client.on("ready", () => {
             ctx.strokeStyle = '#74037b';
             ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
-            ctx.font = '60px sans-serif';
+            ctx.font = '30px sans-serif';
             ctx.fillStyle = '#ffffff';
             ctx.fillText(`Kamu Adalah Murid Ke ${member.guild.memberCount}`, canvas.width / 3.0, canvas.height / 1.8);
 
-            ctx.font = '60px sans-serif';
+            ctx.font = '40px sans-serif';
             ctx.fillStyle = '#ffffff';
             ctx.fillText(member.displayName, canvas.width / 2.5, canvas.height / 1.8);
             
