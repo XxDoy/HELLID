@@ -9,7 +9,6 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
   "dependencies": {
     "ascii-table": "0.0.9",
     "axios": "^0.21.1",
@@ -41,7 +40,7 @@
     "weather.js": "^0.1.0"
   },
   "engines": {
-    "node": "15.5.1"
+    "node": "12.x"
   },
-  "licenses": "Apache-2.0"
+  "license": "Apache-2.0"
 }
