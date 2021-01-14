@@ -64,11 +64,11 @@ client.on("ready", () => {
 
             ctx.font = '30px sans-serif';
             ctx.fillStyle = '#ffffff';
-            ctx.fillText(`${member.guild.memberCount}`, canvas.width / 10, canvas.height / 3.1);
+            ctx.fillText(`${member.guild.memberCount}`, canvas.width / 5, canvas.height / 3.1);
 
             ctx.font = '40px sans-serif';
             ctx.fillStyle = '#ffffff';
-            ctx.fillText(member.displayName, canvas.width / 10, canvas.height / 1.8);
+            ctx.fillText(member.displayName, canvas.width / 5, canvas.height / 1.8);
             
             ctx.beginPath()
             ctx.arc(125, 125, 100, 0, Math.PI * 2, true)
