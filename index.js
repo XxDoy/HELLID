@@ -8,7 +8,7 @@ const fs = require('fs')
 const superagent = require('superagent')
 const { CanvasSenpai } = require("canvas-senpai")
 const canva = new CanvasSenpai();
-const prefix = "b?"
+const prefix = "h?"
 const usersMap = new Map();
 const LIMIT = 5;
 const TIME = 7000;
@@ -34,7 +34,7 @@ client.on("ready", () => {
     console.log(`Bot Ready Up \n1 \n2 \n3 \nReady To Duty ${client.user.username} !`);
 
     let statuses = [
-        `b?help | ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} Blank Members`
+        `h?help | ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} HELLFIRE Members`
     ];
 
     setInterval(function() {
@@ -64,11 +64,11 @@ client.on("ready", () => {
 
             ctx.font = '30px sans-serif';
             ctx.fillStyle = '#ffffff';
-            ctx.fillText(`${member.guild.memberCount}`, canvas.width / 2.5, canvas.height / 3.1);
+            ctx.fillText(`${member.guild.memberCount}`, canvas.width / 10, canvas.height / 3.1);
 
             ctx.font = '40px sans-serif';
             ctx.fillStyle = '#ffffff';
-            ctx.fillText(member.displayName, canvas.width / 2.5, canvas.height / 1.8);
+            ctx.fillText(member.displayName, canvas.width / 10, canvas.height / 1.8);
             
             ctx.beginPath()
             ctx.arc(125, 125, 100, 0, Math.PI * 2, true)

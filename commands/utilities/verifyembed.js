@@ -11,6 +11,7 @@ module.exports = {
         .setTitle('How To Access All Channel?')
         .setDescription('***Type : b?verify***')
         .setFooter(`${client.user.username}`)
+        .setTimestamp()
     return message.channel.send(kiss)
 
 }
