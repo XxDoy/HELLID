@@ -64,7 +64,7 @@ client.on("ready", () => {
 
             ctx.font = '30px sans-serif';
             ctx.fillStyle = '#ffffff';
-            ctx.fillText(`Kamu Adalah Murid Ke ${member.guild.memberCount}`, canvas.width / 3.0, canvas.height / 1.8);
+            ctx.fillText(`${member.guild.memberCount}`, canvas.width / 2.5, canvas.height / 3.1);
 
             ctx.font = '40px sans-serif';
             ctx.fillStyle = '#ffffff';
