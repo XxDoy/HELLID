@@ -88,7 +88,7 @@ client.on("ready", () => {
                         const attachment = new MessageAttachment(data,"welcome-image.png"
                         );
                     
-                        Channels.send(`Welcome to the server, <@${member.user.id}>!`,attachment
+                        Channels.send(`Welcome to the server, <@${member.user.id}>!`,`${member.guild.memberCount}`,attachment
                         );   
 
             })
