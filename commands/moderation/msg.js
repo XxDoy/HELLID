@@ -1,5 +1,4 @@
 const { MessageEmbed } = require('discord.js')
-const serverIcon = message.guilds.iconURL();
 
 module.exports = {
     name: "msg",
@@ -45,7 +44,7 @@ module.exports = {
 
     const embed = new MessageEmbed()
         .setTitle(`${message.guild.name}`)
-        .setThumbnail(`${serverIcon}`)
+        .setThumbnail('https://media.discordapp.net/attachments/798569406149820426/798648843361189898/20210113_032454.jpg?width=702&height=468')
         .setColor("RED")
         .addFields({
             name: `***<a:arrow:798850564824891432> Note***`,
