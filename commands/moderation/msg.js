@@ -60,7 +60,7 @@ module.exports = {
             inline: false
         })
         .setTimestamp()
-        .setFooter(`${member.user.avatarURL} Staff: ${message.author.username}`)
+        .setFooter(`${message.author.displayAvatarURL} Staff: ${message.author.username}`)
 
     if (rMember) {
         var Msg1 = await message.channel.send(mgs); // sends message
