@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js')
+let avatar = user.displayAvatarURL();
 
 module.exports = {
     name: "msg",
@@ -60,7 +61,7 @@ module.exports = {
             inline: false
         })
         .setTimestamp()
-        .setFooter(`${message.author.displayAvatarURL} Staff: ${message.author.username}`)
+        .setFooter(`${avatar} Staff: ${message.author.username}`)
 
     if (rMember) {
         var Msg1 = await message.channel.send(mgs); // sends message
