@@ -8,7 +8,6 @@ const fs = require('fs')
 const superagent = require('superagent')
 const { CanvasSenpai } = require("canvas-senpai")
 const canva = new CanvasSenpai();
-const guild = message.guilds.cache.get("750375821369409576");
 const prefix = "h?"
 const usersMap = new Map();
 const LIMIT = 5;

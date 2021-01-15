@@ -1,6 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const guild = require('../../index')
-const serverIcon = message.guild.iconURL();
+const serverIcon = message.guilds.iconURL();
 
 module.exports = {
     name: "msg",
