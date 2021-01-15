@@ -1,6 +1,9 @@
 const { MessageEmbed } = require('discord.js')
 
-exports.run = async(client, message, args) => {
+module.exports = {
+    name: "msg",
+    category: "moderation",
+    run: async (client, message, args) => {
 
     let rMember = message.mentions.members.first() || message.guild.members.get(args[0]);
 
@@ -68,4 +71,5 @@ exports.run = async(client, message, args) => {
         Msg1.edit(msg5).then(() => rMember.send(embed))
     }
 
+}
 }
