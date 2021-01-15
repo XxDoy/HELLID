@@ -9,7 +9,7 @@ module.exports = {
     const kiss = new MessageEmbed()
         .setColor('Black')
         .setTitle('How To Access All Channel?')
-        .setDescription('***Type : b?verify***')
+        .setDescription('<a:tandaseru:798850583338418186> ***Type : h?verify*** <a:tandaseru:798850583338418186>')
         .setFooter(`${client.user.username}`)
         .setTimestamp()
     return message.channel.send(kiss)
