@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const guild = client.guilds.cache.get("750375821369409576");
+const guild = require('../../index')
 const serverIcon = message.guild.iconURL();
 
 module.exports = {
