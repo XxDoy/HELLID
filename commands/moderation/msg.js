@@ -48,15 +48,15 @@ module.exports = {
         .setColor("RED")
         .addFields({
             name: `***<a:arrow:798850564824891432> Note***`,
-            value: `<a:rArrow:799537985413971989> Terima Kasih ${rMember} Telah Melakukan Partnership Dengan Server Ini, Dimohon Untuk Saling Kerja Sama Kedepannya\n`,
+            value: `<a:kosong:799566630459539456> <a:rArrow:799537985413971989> Terima Kasih ${rMember} Telah Melakukan Partnership Dengan Server Ini, Dimohon Untuk Saling Kerja Sama Kedepannya\n`,
             inline: false
         }, {
             name: "***<a:arrow:798850564824891432> For Information***",
-            value: `<a:rArrow:799537985413971989> ${tertuju}\n`,
+            value: `<a:kosong:799566630459539456> <a:rArrow:799537985413971989> ${tertuju}\n`,
             inline: false
         }, {
             name: "***<a:arrow:798850564824891432> Total Partner***",
-            value: `<a:rArrow:799537985413971989> ${angka}`,
+            value: `<a:kosong:799566630459539456> <a:rArrow:799537985413971989> ${angka}`,
             inline: false
         })
         .setTimestamp()
