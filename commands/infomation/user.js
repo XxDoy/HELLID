@@ -1,66 +1,59 @@
-const { MessageEmbed } = require('discord.js');
+const Discord = require('discord.js');
+const Canvas = require("canvas");
+const { compareText } = require('mathjs');
 
 module.exports = {
     name: "user",
     category: "info",
     run: async(client, message, args) => {
-        let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
-
-        let status;
-        switch (user.presence.status) {
-            case "online":
-                status = "Online";
-                break;
-            case "dnd":
-                status = "Do Not Disturb";
-                break;
-            case "idle":
-                status = "Idle";
-                break;
-            case "invisible":
-                status = "Invisible";
-                break;
+       
+        if(!args[0]) {
+            var user = message.author;
+        } else {
+            var user = message.mentions.users.first() || bot.users.cache.get(args[0]);
         }
+        var member = message.guild.member(user)
 
-        const embed = new MessageEmbed()
-            .setTitle(`${user.user.username} Details`)
-            .setColor("RANDOM")
-            .setThumbnail(user.user.displayAvatarURL({ dynamic: true }))
-            .addFields({
-                name: "ID: ",
-                value: user.user.id,
-            }, {
-                name: "Name: ",
-                value: user.user.username,
-                inline: true
-            }, {
-                name: "Discriminator: ",
-                value: `#${user.user.discriminator}`,
-                inline: true
-            }, {
-                name: "Current Status: ",
-                value: status,
-            }, {
-                name: "Activity: ",
-                value: user.presence.activities[0] ? user.presence.activities[0].name : `User isn't playing a game!`,
-                inline: true
-            }, {
-                name: 'Avatar link: ',
-                value: `[Click Here](${user.user.displayAvatarURL()})`,
-            }, {
-                name: 'Creation Date: ',
-                value: user.user.createdAt.toLocaleDateString("en-us"),
-                inline: true
-            }, {
-                name: 'Joined Date: ',
-                value: user.joinedAt.toLocaleDateString("en-us"),
-                inline: true
-            }, {
-                name: 'User Roles: ',
-                value: user.roles.cache.map(role => role.toString()).join(" ,"),
-                inline: true
-            })
+        const canvas = Canvas.createCanvas(500, 200);
+        const ctx = canvas.getContext("2d");
 
-        await message.channel.send(embed)
+        const background = await Canvas.loadImage("https://wallpapercave.com/wp/wp5128415.jpg")
+        ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+
+        ctx.strokeStyle = color.white;
+        ctx.strokeRect(0, 0, canvas.width, canvas.height)
+
+        ctx.fillstyle = colors.white;
+        var size1 = 40;
+        var size2 = 30;
+        var size3 = 30;
+
+        var name = client.users.cache.get(user.id).tag;
+        do {
+            ctx.font = `${size1 -= 5}px sans-serif`;
+        } while (ctx.measureText(name).width > canvas.width - 225);
+
+        var created = "Created: " + user.createdAt.tolocaleString();
+        do {
+            ctx.font = `${size2 -= 5}px sans-serif`;
+        } while (ctx.measureText(created).width > canvas.width - 225);
+
+        var joinde = "Joined: " + member.joinedAt.tolocaleString();
+        do {
+            ctx.font = `${size3 -= 5}px sans-serif`;
+        } while (ctx.measureText(joined).width > canvas.width - 225);
+
+        ctx.beginPath();
+        ctx.arc(100, 100, 75, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.clip();
+
+        const avatar = await Canvas.loadImage(user.displayAvatarURL({format: "jpg"}));
+        ctx.drawImage(avatar, 25, 25, 150, 150);
+
+        const final = new Discord.MessageAttachment(canvas.toBuffer(), "useromfo.png");
+
+        return message.channel.send(final);
+
+        }
     }
-}
