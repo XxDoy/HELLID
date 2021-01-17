@@ -1,80 +1,66 @@
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
-    name: "serverinfo",
+    name: "user",
     category: "info",
     run: async(client, message, args) => {
         let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
 
-        let region;
-        switch (message.guild.region) {
-            case "europe":
-                region = '🇪🇺 Europe';
+        let status;
+        switch (user.presence.status) {
+            case "online":
+                status = "Online";
                 break;
-            case "us-east":
-                region = '🇺🇸 us-east'
+            case "dnd":
+                status = "Do Not Disturb";
                 break;
-            case "us-west":
-                region = '🇺🇸 us-west';
+            case "idle":
+                status = "Idle";
                 break;
-            case "us-south":
-                region = '🇺🇸 us-south'
-                break;
-            case "us-central":
-                region = '🇺🇸 us-central'
+            case "invisible":
+                status = "Invisible";
                 break;
         }
 
-        const roles = message.guild.roles.cache.sort((a, b) => b.position - a.position).map(role => role.toString());
-        const members = message.guild.members.cache;
-        const channels = message.guild.channels.cache;
-        const emojis = message.guild.emojis.cache;
-
         const embed = new MessageEmbed()
-            .setThumbnail(message.guild.iconURL({ dynamic: true }))
-            .setColor('RANDOM')
-            .setTitle(`${message.guild.name} server stats`)
+            .setTitle(`${user.user.username} Details`)
+            .setColor("RANDOM")
+            .setThumbnail(user.user.displayAvatarURL({ dynamic: true }))
             .addFields({
-                name: "🔐 Owner: ",
-                value: message.guild.owner.user.tag,
+                name: "ID: ",
+                value: user.user.id,
+            }, {
+                name: "Name: ",
+                value: user.user.username,
                 inline: true
             }, {
-                name: "👥 Members: ",
-                value: `There are ${message.guild.memberCount} users!`,
+                name: "Discriminator: ",
+                value: `#${user.user.discriminator}`,
                 inline: true
             }, {
-                name: "📈 Members Online: ",
-                value: `There are ${message.guild.members.cache.filter(m => m.user.presence.status == "online").size} users online!`,
+                name: "Current Status: ",
+                value: status,
+            }, {
+                name: "Activity: ",
+                value: user.presence.activities[0] ? user.presence.activities[0].name : `User isn't playing a game!`,
                 inline: true
             }, {
-                name: "💻 Total Bots: ",
-                value: `There are ${message.guild.members.cache.filter(m => m.user.bot).size} bots!`,
+                name: 'Avatar link: ',
+                value: `[Click Here](${user.user.displayAvatarURL()})`,
+            }, {
+                name: 'Creation Date: ',
+                value: user.user.createdAt.toLocaleDateString("en-us"),
                 inline: true
             }, {
-                name: "➕ Creation Date: ",
-                value: message.guild.createdAt.toLocaleDateString("en-us"),
+                name: 'Joined Date: ',
+                value: user.joinedAt.toLocaleDateString("en-us"),
                 inline: true
             }, {
-                name: "📊 Roles Count: ",
-                value: `There are ${message.guild.roles.cache.size} roles in this server.`,
-                inline: true,
-            }, {
-                name: `🏴 Region: `,
-                value: region,
-                inline: true
-            }, {
-                name: `🎫 Verified: `,
-                value: message.guild.verified ? 'Server is verified' : `Server isn't verified`,
-                inline: true
-            }, {
-                name: '🚀 Boosters: ',
-                value: message.guild.premiumSubscriptionCount >= 1 ? `There are ${message.guild.premiumSubscriptionCount} Boosters` : `There are no boosters`,
-                inline: true
-            }, {
-                name: "👍 Emojis: ",
-                value: message.guild.emojis.cache.size >= 1 ? `There are ${message.guild.emojis.cache.size} emojis!` : 'There are no emojis',
+                name: 'User Roles: ',
+                value: user.roles.cache.map(role => role.toString()).join(" ,"),
                 inline: true
             })
+
         await message.channel.send(embed)
     }
 }
