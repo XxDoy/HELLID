@@ -1,59 +1,80 @@
-const Discord = require('discord.js');
-const Canvas = require("canvas");
-const { compareText } = require('mathjs');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
-    name: "user",
+    name: "serverinfo",
     category: "info",
     run: async(client, message, args) => {
-       
-        if(!args[0]) {
-            var user = message.author;
-        } else {
-            var user = message.mentions.users.first() || bot.users.cache.get(args[0]);
+        let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
+
+        let region;
+        switch (message.guild.region) {
+            case "europe":
+                region = '🇪🇺 Europe';
+                break;
+            case "us-east":
+                region = '🇺🇸 us-east'
+                break;
+            case "us-west":
+                region = '🇺🇸 us-west';
+                break;
+            case "us-south":
+                region = '🇺🇸 us-south'
+                break;
+            case "us-central":
+                region = '🇺🇸 us-central'
+                break;
         }
-        var member = message.guild.member(user)
 
-        const canvas = Canvas.createCanvas(500, 200);
-        const ctx = canvas.getContext("2d");
+        const roles = message.guild.roles.cache.sort((a, b) => b.position - a.position).map(role => role.toString());
+        const members = message.guild.members.cache;
+        const channels = message.guild.channels.cache;
+        const emojis = message.guild.emojis.cache;
 
-        const background = await Canvas.loadImage("https://wallpapercave.com/wp/wp5128415.jpg")
-        ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-
-        ctx.strokeStyle = color.white;
-        ctx.strokeRect(0, 0, canvas.width, canvas.height)
-
-        ctx.fillstyle = colors.white;
-        var size1 = 40;
-        var size2 = 30;
-        var size3 = 30;
-
-        var name = client.users.cache.get(user.id).tag;
-        do {
-            ctx.font = `${size1 -= 5}px sans-serif`;
-        } while (ctx.measureText(name).width > canvas.width - 225);
-
-        var created = "Created: " + user.createdAt.tolocaleString();
-        do {
-            ctx.font = `${size2 -= 5}px sans-serif`;
-        } while (ctx.measureText(created).width > canvas.width - 225);
-
-        var joinde = "Joined: " + member.joinedAt.tolocaleString();
-        do {
-            ctx.font = `${size3 -= 5}px sans-serif`;
-        } while (ctx.measureText(joined).width > canvas.width - 225);
-
-        ctx.beginPath();
-        ctx.arc(100, 100, 75, 0, Math.PI * 2, true);
-        ctx.closePath();
-        ctx.clip();
-
-        const avatar = await Canvas.loadImage(user.displayAvatarURL({format: "jpg"}));
-        ctx.drawImage(avatar, 25, 25, 150, 150);
-
-        const final = new Discord.MessageAttachment(canvas.toBuffer(), "useromfo.png");
-
-        return message.channel.send(final);
-
-        }
+        const embed = new MessageEmbed()
+            .setThumbnail(message.guild.iconURL({ dynamic: true }))
+            .setColor('RANDOM')
+            .setTitle(`${message.guild.name} server stats`)
+            .addFields({
+                name: "🔐 Owner: ",
+                value: message.guild.owner.user.tag,
+                inline: true
+            }, {
+                name: "👥 Members: ",
+                value: `There are ${message.guild.memberCount} users!`,
+                inline: true
+            }, {
+                name: "📈 Members Online: ",
+                value: `There are ${message.guild.members.cache.filter(m => m.user.presence.status == "online").size} users online!`,
+                inline: true
+            }, {
+                name: "💻 Total Bots: ",
+                value: `There are ${message.guild.members.cache.filter(m => m.user.bot).size} bots!`,
+                inline: true
+            }, {
+                name: "➕ Creation Date: ",
+                value: message.guild.createdAt.toLocaleDateString("en-us"),
+                inline: true
+            }, {
+                name: "📊 Roles Count: ",
+                value: `There are ${message.guild.roles.cache.size} roles in this server.`,
+                inline: true,
+            }, {
+                name: `🏴 Region: `,
+                value: region,
+                inline: true
+            }, {
+                name: `🎫 Verified: `,
+                value: message.guild.verified ? 'Server is verified' : `Server isn't verified`,
+                inline: true
+            }, {
+                name: '🚀 Boosters: ',
+                value: message.guild.premiumSubscriptionCount >= 1 ? `There are ${message.guild.premiumSubscriptionCount} Boosters` : `There are no boosters`,
+                inline: true
+            }, {
+                name: "👍 Emojis: ",
+                value: message.guild.emojis.cache.size >= 1 ? `There are ${message.guild.emojis.cache.size} emojis!` : 'There are no emojis',
+                inline: true
+            })
+        await message.channel.send(embed)
     }
+}
