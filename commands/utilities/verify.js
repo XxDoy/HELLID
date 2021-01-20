@@ -23,7 +23,7 @@ module.exports = {
 
     await message.member.roles.add("752367087409823775");
 
-    const embed = new MessageEmbed()
+    let embed = new MessageEmbed()
             .setColor('BLACK')
             .setTitle(`${message.author.username}`)
             .setDescription('Verified <a:checklist:801435724636880936>')
