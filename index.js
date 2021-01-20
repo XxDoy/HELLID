@@ -1,6 +1,5 @@
 const { Client, MessageEmbed, MessageAttachment,Collection } = require('discord.js');
-const discord = require('discord.js');
-const Discord = require('discord.js');
+const { discord, Discord } = require('discord.js');
 const { config } = require('dotenv');
 const Canvas = require('canvas');
 const { resolve, join } = require('path')

@@ -52,7 +52,7 @@ module.exports = {
                     
                     
                     
-                    '[`Join Server`](https://discord.gg/VW5yb2tFut)',
+                    '[`Join Server`](https://discord.gg/6bb2TAzx)',
                     inline: true
                 }, {    
                     name: "Note ",
