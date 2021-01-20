@@ -20,8 +20,8 @@ const client = new Client({
     disableEveryone: true
 })
 
-const { editedMessage, deletedMessages} = new Discord.Collection();
-
+client.editedMessage = new Discord.Collection();
+client.deletedMessages = new Discord.Collection();
 client.commands = new Collection();
 client.aliases = new Collection();
 client.config1 = config;
