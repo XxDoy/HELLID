@@ -1,7 +1,6 @@
 const { Client, MessageEmbed, MessageAttachment,Collection } = require('discord.js');
 const { discord, Discord } = require('discord.js');
 const { config } = require('dotenv');
-const { editedMessage, deletedMessages} = new Discord.Collection();
 const Canvas = require('canvas');
 const { resolve, join } = require('path')
 const { get } = require('snekfetch')
@@ -20,6 +19,8 @@ const DIFF = 3000;
 const client = new Client({
     disableEveryone: true
 })
+
+const { editedMessage, deletedMessages} = new Discord.Collection();
 
 client.commands = new Collection();
 client.aliases = new Collection();
