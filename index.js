@@ -213,8 +213,8 @@ client.on("ready", () => {
             })
              
             client.on('message', message => {
-                if(!message.content.startsWith(PREFIX)) return;
-                let args = message.content.substring(PREFIX.length).split(' ')
+                if(!message.content.startsWith(prefix)) return;
+                let args = message.content.substring(prefix.length).split(' ')
                 if(message.author.bot) return
                 if(message.channel.type === 'dm') return
                 switch(args[0]){
