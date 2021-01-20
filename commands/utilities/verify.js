@@ -27,6 +27,7 @@ module.exports = {
             .setColor('BLACK')
             .setTitle(`${message.author.username}`)
             .setDescription('Verified <a:checklist:801435724636880936>')
+            .addFields('```EXAMPLE : h?verify```')
             .setImage(avatar)
             .setTimeStamp()
         await message.channel.send(embed)
