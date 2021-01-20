@@ -197,6 +197,7 @@ client.on("ready", () => {
             });
 
             //afk
+            let args = message.content.substring(prefix.length).split(' ')
             let reason = args.slice(1).join("")
             client.afk = new Map();
             client.on("message", message => {
@@ -219,7 +220,6 @@ client.on("ready", () => {
              
             client.on('message', message => {
                 if(!message.content.startsWith(prefix)) return;
-                let args = message.content.substring(prefix.length).split(' ')
                 if(message.author.bot) return
                 if(message.channel.type === 'dm') return
                 switch(args[0]){
