@@ -5,6 +5,8 @@ module.exports = {
     description: "deleting message",
     run: async(message, args) => {
 
+        if (!message.guild) return;
+
         if (!message.member.hasPermission("MANAGE_MESSAGE")) return message.channel.send('You can\'t use that.');
 
         if(!args[0]) return message.reply('please provide an amount of messages for me to delete')
