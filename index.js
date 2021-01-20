@@ -44,25 +44,7 @@ client.on("ready", () => {
         client.user.setPresence({ activity: { name: status }, status: 'dnd', type: 'WATCHING' });
     }, 1000);
 
-    client.on('message', async message => {
-        if(message.author.bot) return;
-        // checking for afk messages
-        if(db.has(`afk-${message.author.id}+${message.guild.id}`)) {
-            const info = db.get(`afk-${message.author.id}+${message.guild.id}`)
-            await db.delete(`afk-${message.author.id}+${message.guild.id}`)
-            message.reply(`Your afk status have been removed (${info})`)
-        }
-        //checking for mentions
-        if(message.mentions.members.first()) {
-            if(db.has(`afk-${message.mentions.members.first().id}+${message.guild.id}`)) {
-                message.channel.send(message.mentions.members.first().user.tag + ":" + db.get(`afk-${message.mentions.members.first().id}+${message.guild.id}`))
-            }else return;
-        }else;
-        
-       
-        
-    })
-
+    
     client.on('guildMemberAdd', async(member) => { // this event gets triggered when a new member joins the server!
 
         const Channels = member.guild.channels.cache.get('798631082182180874') //insert channel id that you want to send to
@@ -209,6 +191,44 @@ client.on("ready", () => {
               }
             })
             });
+
+            bot.afk = new Map();
+            bot.on("message", message => {
+             
+                if(db.has(message.author.id + message.guild.id  + '.afk')) {
+                    message.member.setNickname(`${message.author.username}`).catch((err) => {
+                        return
+                    })
+                    message.channel.send("You have been removed from the AFK")
+                    db.delete(message.author.id +  message.guild.id + '.afk')
+                    db.delete(message.author.id + message.guild.id + '.message')
+                }
+            })
+            bot.on('message', message => {
+                if(message.author.bot) return
+                message.mentions.users.forEach(user => {
+                    if(db.has(user.id + message.guild.id +'.afk')) message.channel.send(`**${user.tag}** is currently AFK`)
+                })
+            })
+             
+            bot.on('message', message => {
+                if(!message.content.startsWith(PREFIX)) return;
+                let args = message.content.substring(PREFIX.length).split(' ')
+                if(message.author.bot) return
+                if(message.channel.type === 'dm') return
+                switch(args[0]){
+                    case 'afk':
+                        message.member.setNickname(`[AFK]${message.author.username}`).catch((err) => {
+                            return
+                        })
+             
+                        db.set(message.author.id + message.guild.id +'.afk', 'true')
+                        db.set(message.author.id + message.guild.id + '.messageafk', message.content.split(' ').slice(1))
+                        message.channel.send(`you have been set to AFK`)
+                        break;
+                }
+            })
+            
 
 // jangan pernah naruh command atau apapun dibawah ini karena script ini menentukan antar file jadi wajib diatas biar berfungsi
 
