@@ -17,7 +17,7 @@ module.exports = {
             .setDescription('**Successfully Verified!!** <a:checklist:801435724636880936>\n\n```EXAMPLE : h?verify```')
             .setTimestamp()
         await message.channel.send(embed)
-        msg.delete()
+        message.delete()
     return;
     
     }
