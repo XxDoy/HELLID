@@ -9,6 +9,7 @@ const db = require('quick.db')
 const superagent = require('superagent')
 const { CanvasSenpai } = require("canvas-senpai");
 const { c } = require('tar');
+const { timeStamp } = require('console');
 const canva = new CanvasSenpai();
 const prefix = "h?"
 const usersMap = new Map();
@@ -212,7 +213,7 @@ client.on("ready", () => {
             client.on('message', message => {
                 if(message.author.bot) return
                 message.mentions.users.forEach(user => {
-                    if(db.has(user.id + message.guild.id +'.afk')) message.channel.send(`**${user.tag}** is AFK ${currentDate}`)
+                    if(db.has(user.id + message.guild.id +'.afk')) message.channel.send(`**${user.tag}** is AFK ${TIME}`)
                 })
             })
              
