@@ -15,7 +15,7 @@ module.exports = {
         user = message.author;
     }
 
-        let avatar = user.displayAvatarURL({ size: 4096, dynamic: true });
+        let avatar = user.displayAvatarURL({ size: 3096, dynamic: true });
 
         if (message.channel.id !== "798808092426240021") {
             return;
@@ -26,7 +26,7 @@ module.exports = {
     let embed = new MessageEmbed()
             .setColor('BLACK')
             .setTitle(`${message.author.username}`)
-            .setDescription('Verified <a:checklist:801435724636880936>\n\n```EXAMPLE : h?verify```')
+            .setDescription('**Verified** <a:checklist:801435724636880936>\n\n```EXAMPLE : h?verify```')
             .setThumbnail(avatar)
             .setTimestamp()
         await message.channel.send(embed)
