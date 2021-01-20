@@ -196,6 +196,8 @@ client.on("ready", () => {
             })
             });
 
+            //afk
+            const content = args.join(" ")
             client.afk = new Map();
             client.on("message", message => {
              
@@ -211,7 +213,7 @@ client.on("ready", () => {
             client.on('message', message => {
                 if(message.author.bot) return
                 message.mentions.users.forEach(user => {
-                    if(db.has(user.id + message.guild.id +'.afk')) message.channel.send(`**${user.tag}** is currently AFK`)
+                    if(db.has(user.id + message.guild.id +'.afk')) message.channel.send(`**${user.tag}** is AFK : ${content}`)
                 })
             })
              
@@ -222,13 +224,13 @@ client.on("ready", () => {
                 if(message.channel.type === 'dm') return
                 switch(args[0]){
                     case 'afk':
-                        message.member.setNickname(`[AFK]${message.author.username}`).catch((err) => {
+                        message.member.setNickname(`[AFK] ${message.author.username}`).catch((err) => {
                             return
                         })
              
                         db.set(message.author.id + message.guild.id +'.afk', 'true')
                         db.set(message.author.id + message.guild.id + '.messageafk', message.content.split(' ').slice(1))
-                        message.channel.send(`you have been set to AFK`)
+                        message.channel.send(`<@${user.user.id}> your AFK is now set to: ${content}`)
                         break;
                 }
             })
