@@ -3,7 +3,7 @@ module.exports = {
     aliases: ["prune", "purge"],
     cateogry: "moderation",
     description: "deleting message",
-    run: async(message, args) => {
+    run: async(client, message, args) => {
 
         if (!message.member.hasPermission("MANAGE_MESSAGE")) return message.channel.send('You can\'t use that.');
 

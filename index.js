@@ -5,6 +5,7 @@ const Canvas = require('canvas');
 const { resolve, join } = require('path')
 const { get } = require('snekfetch')
 const fs = require('fs')
+const db = require('quick.db')
 const superagent = require('superagent')
 const { CanvasSenpai } = require("canvas-senpai")
 const canva = new CanvasSenpai();
@@ -43,9 +44,22 @@ client.on("ready", () => {
         client.user.setPresence({ activity: { name: status }, status: 'dnd', type: 'WATCHING' });
     }, 1000);
 
-    client.on("message", message => {
-        let wordArray = message.content.split(" ");
-        console.log(wordArray)
+    client.on('message', async message => {
+        if(message.author.bot) return;
+        // checking for afk messages
+        if(db.has(`afk-${message.author.id}+${message.guild.id}`)) {
+            const info = db.get(`afk-${message.author.id}+${message.guild.id}`)
+            await db.delete(`afk-${message.author.id}+${message.guild.id}`)
+            message.reply(`Your afk status have been removed (${info})`)
+        }
+        //checking for mentions
+        if(message.mentions.members.first()) {
+            if(db.has(`afk-${message.mentions.members.first().id}+${message.guild.id}`)) {
+                message.channel.send(message.mentions.members.first().user.tag + ":" + db.get(`afk-${message.mentions.members.first().id}+${message.guild.id}`))
+            }else return;
+        }else;
+        
+       
         
     })
 
@@ -195,23 +209,6 @@ client.on("ready", () => {
               }
             })
             });
-
-
-            const db = require('quick.db')
-
-            //under if(message.author.bot)
-            
-            if(db.has(`afk-${message.author.id}+${message.guild.id}`)) {
-                    const info = db.get(`afk-${message.author.id}+${message.guild.id}`)
-                    await db.delete(`afk-${message.author.id}+${message.guild.id}`)
-                    message.reply(`Your afk status have been removed (${info})`)
-                }
-                //checking for mentions
-                if(message.mentions.members.first()) {
-                    if(db.has(`afk-${message.mentions.members.first().id}+${message.guild.id}`)) {
-                        message.channel.send(message.mentions.members.first().user.tag + ":" + db.get(`afk-${message.mentions.members.first().id}+${message.guild.id}`))
-                    }else return;
-                }else;
 
 // jangan pernah naruh command atau apapun dibawah ini karena script ini menentukan antar file jadi wajib diatas biar berfungsi
 
