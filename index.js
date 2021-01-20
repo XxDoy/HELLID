@@ -197,11 +197,9 @@ client.on("ready", () => {
             });
 
             //afk
-            let args = message.content.substring(prefix.length).split(' ')
-            let reason = args.slice(1).join("")
             client.afk = new Map();
             client.on("message", message => {
-             
+                let args = message.content.substring(prefix.length).split(' ')
                 if(db.has(message.author.id + message.guild.id  + '.afk')) {
                     message.member.setNickname(`${message.author.username}`).catch((err) => {
                         return
@@ -212,6 +210,7 @@ client.on("ready", () => {
                 }
             })
             client.on('message', message => {
+                let reason = args.slice(1).join("")
                 if(message.author.bot) return
                 message.mentions.users.forEach(user => {
                     if(db.has(user.id + message.guild.id +'.afk')) message.channel.send(`**${user.tag}** is AFK : ${reason}`)
