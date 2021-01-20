@@ -15,6 +15,7 @@ const usersMap = new Map();
 const LIMIT = 5;
 const TIME = 7000;
 const DIFF = 3000;
+const currentDate = new Date();
 
 const client = new Client({
     disableEveryone: true
@@ -199,7 +200,6 @@ client.on("ready", () => {
             //afk
             client.afk = new Map();
             client.on("message", message => {
-                let args = message.content.substring(prefix.length).split(' ')
                 if(db.has(message.author.id + message.guild.id  + '.afk')) {
                     message.member.setNickname(`${message.author.username}`).catch((err) => {
                         return
@@ -210,15 +210,15 @@ client.on("ready", () => {
                 }
             })
             client.on('message', message => {
-                let reason = args.slice(1).join("")
                 if(message.author.bot) return
                 message.mentions.users.forEach(user => {
-                    if(db.has(user.id + message.guild.id +'.afk')) message.channel.send(`**${user.tag}** is AFK : ${reason}`)
+                    if(db.has(user.id + message.guild.id +'.afk')) message.channel.send(`**${user.tag}** is AFK ${currentDate}`)
                 })
             })
              
             client.on('message', message => {
                 if(!message.content.startsWith(prefix)) return;
+                let args = message.content.substring(prefix.length).split(' ')
                 if(message.author.bot) return
                 if(message.channel.type === 'dm') return
                 switch(args[0]){
@@ -229,7 +229,7 @@ client.on("ready", () => {
              
                         db.set(message.author.id + message.guild.id +'.afk', 'true')
                         db.set(message.author.id + message.guild.id + '.messageafk', message.content.split(' ').slice(1))
-                        message.channel.send(`<@${user.user.id}> your AFK is now set to: ${reason}`)
+                        message.channel.send(`<@${user.user.id}> you have been set to **AFK**`)
                         break;
                 }
             })
