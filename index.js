@@ -79,7 +79,7 @@ client.on("message", async message =>{
     if(message.author.bot) return
     if(message.channel.type === "dm") return
     if(message.content.startsWith(`${prefix}snipe`)){
-        const msg = deletedMessages.get(message.channel.id)
+        const msg = deletedMessage.get(message.channel.id)
         if(!msg) return message.reply('There are no recently deleted messages!')
         const embed = new Discord.MessageEmbed()
         .setAuthor(`Deleted by ${msg.author.tag}`, msg.author.displayAvatarURL())
