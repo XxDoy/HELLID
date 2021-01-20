@@ -17,6 +17,7 @@ const LIMIT = 5;
 const TIME = 7000;
 const DIFF = 3000;
 const currentDate = new Date();
+const firstMessage = require('./first-message')
 
 const client = new Client({
     disableEveryone: true
