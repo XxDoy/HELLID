@@ -29,7 +29,7 @@ module.exports = {
             .setDescription('Verified <a:checklist:801435724636880936>')
             .addFields('```EXAMPLE : h?verify```')
             .setImage(avatar)
-            .setTImestamp()
+            .setTimestamp()
         await message.channel.send(embed)
         msg.delete()
     return;
