@@ -1,6 +1,7 @@
 const { Client, MessageEmbed, MessageAttachment,Collection } = require('discord.js');
 const { discord, Discord } = require('discord.js');
 const { config } = require('dotenv');
+const { editedMessage, deletedMessages} = new Discord.Collection();
 const Canvas = require('canvas');
 const { resolve, join } = require('path')
 const { get } = require('snekfetch')
@@ -45,7 +46,53 @@ client.on("ready", () => {
         client.user.setPresence({ activity: { name: status }, status: 'dnd', type: 'WATCHING' });
     }, 1000);
 
-    
+// editsnipe
+client.on("messageUpdate", message => {
+  editedMessage.set(message.channel.id, message)
+})
+client.on("message", async message =>{
+    if(message.author.bot) return
+    if(message.channel.type === "dm") return
+    if(message.content.startsWith(`${prefix}editsnipe`)){
+        const msg = editedMessage.get(message.channel.id)
+        if(!msg) return message.reply('There are no recently edited messages!')
+        const embed = new Discord.MessageEmbed()
+        .setAuthor(`${msg.author.tag}`, msg.author.displayAvatarURL())
+        .setDescription(msg.content)
+        .setFooter("Shows the last edited message")
+        if(msg.image)embed.setImage(msg.image)
+ 
+        message.channel.send(embed).catch((err) =>{
+            message.channel.send('I was unable to fulfill your request | Bug maybe? Report it using the !bug command')
+        })
+    }
+})
+
+
+    // Snipe
+    client.on("messageDelete", message =>{
+    deletedMessages.set(message.channel.id, message)
+})
+
+client.on("message", async message =>{
+    if(message.author.bot) return
+    if(message.channel.type === "dm") return
+    if(message.content.startsWith(`${prefix}snipe`)){
+        const msg = deletedMessages.get(message.channel.id)
+        if(!msg) return message.reply('There are no recently deleted messages!')
+        const embed = new Discord.MessageEmbed()
+        .setAuthor(`Deleted by ${msg.author.tag}`, msg.author.displayAvatarURL())
+        .setDescription(msg.content)
+        if(msg.image)embed.setImage(msg.image)
+ 
+        message.channel.send(embed).catch((err) =>{
+            message.channel.send('I was unable to fulfill your request | Bug maybe? Report it using the !bug command')
+        })
+    }
+})
+
+
+    // Canvas Welcome
     client.on('guildMemberAdd', async(member) => { // this event gets triggered when a new member joins the server!
 
         const Channels = member.guild.channels.cache.get('798631082182180874') //insert channel id that you want to send to
