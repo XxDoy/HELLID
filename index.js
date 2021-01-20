@@ -1,4 +1,4 @@
-const { Client, MessageEmbed, MessageAttachment,Collection } = require('discord.js');
+const { Client, MessageEmbed, MessageAttachment, Collection } = require('discord.js');
 const { discord, Discord } = require('discord.js');
 const { config } = require('dotenv');
 const Canvas = require('canvas');
@@ -20,8 +20,8 @@ const client = new Client({
     disableEveryone: true
 })
 
-client.editedMessage = new Discord.Collection();
-client.deletedMessages = new Discord.Collection();
+client.editedMessage = new Collection();
+client.deletedMessages = new Collection();
 client.commands = new Collection();
 client.aliases = new Collection();
 client.config1 = config;
