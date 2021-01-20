@@ -200,6 +200,7 @@ client.on("ready", () => {
             //afk
             client.afk = new Map();
             client.on("message", message => {
+                let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
                 if(db.has(message.author.id + message.guild.id  + '.afk')) {
                     message.member.setNickname(`${message.author.username}`).catch((err) => {
                         return
