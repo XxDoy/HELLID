@@ -17,6 +17,8 @@ module.exports = {
 
         if (args[0] < 1) return message.reply(`you need to delete at least one message`)
 
+        if (!message.guild) return;
+
         await message.channel.bulkDelete(parseInt(args[0]) + 1)
             .catch(err => console.log(err))
         message.channel.send(`Deleted ${args[0]} messages!`).then(m => m.delete({ timeout : 5000 }))
