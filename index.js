@@ -200,7 +200,6 @@ client.on("ready", () => {
             //afk
             client.afk = new Map();
             client.on("message", message => {
-                let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
                 if(db.has(message.author.id + message.guild.id  + '.afk')) {
                     message.member.setNickname(`${message.author.username}`).catch((err) => {
                         return
@@ -230,7 +229,7 @@ client.on("ready", () => {
              
                         db.set(message.author.id + message.guild.id +'.afk', 'true')
                         db.set(message.author.id + message.guild.id + '.messageafk', message.content.split(' ').slice(1))
-                        message.channel.send(`<@${user.user.id}> you have been set to **AFK**`)
+                        message.channel.send(`You have been set to **AFK**`)
                         break;
                 }
             })
