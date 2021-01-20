@@ -72,7 +72,7 @@ client.on("message", async message =>{
 
     // Snipe
     client.on("messageDelete", message =>{
-    deletedMessages.set(message.channel.id, message)
+    deletedMessage.set(message.channel.id, message)
 })
 
 client.on("message", async message =>{
