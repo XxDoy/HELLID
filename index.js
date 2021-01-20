@@ -213,7 +213,7 @@ client.on("ready", () => {
             client.on('message', message => {
                 if(message.author.bot) return
                 message.mentions.users.forEach(user => {
-                    if(db.has(user.id + message.guild.id +'.afk')) message.channel.send(`**${user.tag}** is AFK ${TIME}`)
+                    if(db.has(user.id + message.guild.id +'.afk')) message.channel.send(`**${user.tag}** is AFK at ${timeStamp}`)
                 })
             })
              
