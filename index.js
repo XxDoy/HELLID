@@ -7,7 +7,8 @@ const { get } = require('snekfetch')
 const fs = require('fs')
 const db = require('quick.db')
 const superagent = require('superagent')
-const { CanvasSenpai } = require("canvas-senpai")
+const { CanvasSenpai } = require("canvas-senpai");
+const { c } = require('tar');
 const canva = new CanvasSenpai();
 const prefix = "h?"
 const usersMap = new Map();
@@ -192,8 +193,8 @@ client.on("ready", () => {
             })
             });
 
-            bot.afk = new Map();
-            bot.on("message", message => {
+            client.afk = new Map();
+            client.on("message", message => {
              
                 if(db.has(message.author.id + message.guild.id  + '.afk')) {
                     message.member.setNickname(`${message.author.username}`).catch((err) => {
@@ -204,14 +205,14 @@ client.on("ready", () => {
                     db.delete(message.author.id + message.guild.id + '.message')
                 }
             })
-            bot.on('message', message => {
+            client.on('message', message => {
                 if(message.author.bot) return
                 message.mentions.users.forEach(user => {
                     if(db.has(user.id + message.guild.id +'.afk')) message.channel.send(`**${user.tag}** is currently AFK`)
                 })
             })
              
-            bot.on('message', message => {
+            client.on('message', message => {
                 if(!message.content.startsWith(PREFIX)) return;
                 let args = message.content.substring(PREFIX.length).split(' ')
                 if(message.author.bot) return
