@@ -5,8 +5,6 @@ module.exports = {
     description: "deleting message",
     run: async(message, args) => {
 
-        if (!message.member.hasPermission('MANAGE_MESSAGE')) return message.channel.send('You can\'t use that.');
-
         if(!args[0]) return message.reply('please provide an amount of messages for me to delete')
 
         if(isNaN(args[0])) return message.reply('Please eneter a number')
@@ -14,8 +12,6 @@ module.exports = {
         if (parseInt(args[0]) > 101) return message.reply(`you cannot clear more than 100 messages at once`)
 
         if (args[0] < 1) return message.reply(`you need to delete at least one message`)
-
-        if (!message.guild) return;
 
         await message.channel.bulkDelete(parseInt(args[0]) + 1)
             .catch(err => console.log(err))
