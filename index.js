@@ -81,7 +81,7 @@ client.on("ready", () => {
             const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
             ctx.drawImage(avatar, 25, 25, 200, 200);
             
-            const attachment = new Discord.MessageAttachment(
+            const attachment = new MessageAttachment(
                 data,
                 "welcome-image.png"
             );
