@@ -55,7 +55,7 @@ client.on("ready", () => {
     client.on('guildMemberAdd', async(member) => { // this event gets triggered when a new member joins the server!
 
         const Channels = member.guild.channels.cache.get('798631082182180874') //insert channel id that you want to send to
-        let data = await canva.welcome(member, { link: 'https://wallpapercave.com/wp/wp4067386.png', blur:  true})
+        let data = await canva.welcome(member, { link: 'https://wallpapercave.com/wp/wp5128415.jpg', blur:  true})
         const canvas = Canvas.createCanvas(900, 250);
         const ctx = canvas.getContext('2d');
         
@@ -94,51 +94,51 @@ client.on("ready", () => {
                         .setTimestamp()
                         .setFooter(`Kamu Member Ke ${member.guild.memberCount}`)
 
-                        /*let data = await canva.welcome(member, { link: "https://wallpapercave.com/wp/wp5128415.jpg" })
+                        let data = await canva.welcome(member, { link: "https://wallpapercave.com/wp/wp5128415.jpg" })
  
                         const attachment = new MessageAttachment(data,"welcome-image.png"
                         );
                     
-                        Channels.send(`Welcome to the server, <@${member.user.id}>!`,`${member.guild.memberCount}`,attachment
-                        );*/
+                        Channels.send(`Welcome to HELLFIRE, <@${member.user.id}>!`,`${member.guild.memberCount}`,attachment
+                        );
 
                         Channels.send(embed)
 
             })
 
-        client.on('guildMemberRemove', async(member) =>{
+        // client.on('guildMemberRemove', async(member) =>{
 
-            const Channels = member.guild.channels.cache.get("798631082182180874")
+        //     const Channels = member.guild.channels.cache.get("798631082182180874")
             
-            const canvas = Canvas.createCanvas(900, 250);
-            const ctx = canvas.getContext('2d');
+        //     const canvas = Canvas.createCanvas(900, 250);
+        //     const ctx = canvas.getContext('2d');
             
-                const background = await Canvas.loadImage('./background.jpg')
-                ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+        //         const background = await Canvas.loadImage('./background.jpg')
+        //         ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
             
-                    ctx.strokeStyle = '#74037b';
-                    ctx.strokeRect(0, 0, canvas.width, canvas.height);
+        //             ctx.strokeStyle = '#74037b';
+        //             ctx.strokeRect(0, 0, canvas.width, canvas.height);
             
-                    ctx.beginPath()
-                    ctx.arc(125, 125, 100, 0, Math.PI * 2, true)
-                    ctx.closePath()
-                    ctx.clip()
+        //             ctx.beginPath()
+        //             ctx.arc(125, 125, 100, 0, Math.PI * 2, true)
+        //             ctx.closePath()
+        //             ctx.clip()
 
-                    const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
-                    ctx.drawImage(avatar, 25, 25, 200, 200);
+        //             const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
+        //             ctx.drawImage(avatar, 25, 25, 200, 200);
             
-            const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
+        //     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
             
-            const embed = new MessageEmbed()
-                        .setColor("RANDOM")
-                        .setAuthor(member.user.username, member.user.avatarURL())
-                        .setImage("attachment://welcome-image.png")
-                        .attachFiles(attachment)
-                        .setTimestamp()
-                        .setFooter(`Kamu Member Ke ${member.guild.memberCount}`)
+        //     const embed = new MessageEmbed()
+        //                 .setColor("RANDOM")
+        //                 .setAuthor(member.user., member.user.avatarURL())
+        //                 .setImage("attachment://welcome-image.png")
+        //                 .attachFiles(attachment)
+        //                 .setTimestamp()
+        //                 .setFooter(`Kamu Member Ke ${member.guild.memberCount}`)
             
-            Channels.send(`<@${member.user.id}> WOKEH KEMBALI LAGI`,embed)
-            })
+        //     Channels.send(`<@${member.user.id}> WOKEH KEMBALI LAGI`,embed)
+        //     })
             
     client.on('message', message => {
         if (message.author.bot) return;
