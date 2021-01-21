@@ -55,6 +55,7 @@ client.on("ready", () => {
     client.on('guildMemberAdd', async(member) => { // this event gets triggered when a new member joins the server!
 
         const Channels = member.guild.channels.cache.get('798631082182180874') //insert channel id that you want to send to
+        let data = await canva.welcome(member, { link: "https://wallpapercave.com/wp/wp5128415.jpg", blur:  true})
         const canvas = Canvas.createCanvas(900, 250);
         const ctx = canvas.getContext('2d');
         
@@ -80,7 +81,10 @@ client.on("ready", () => {
             const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
             ctx.drawImage(avatar, 25, 25, 200, 200);
             
-            const attachment = new MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
+            const attachment = new Discord.MessageAttachment(
+                data,
+                "welcome-image.png"
+            );
             
             const embed = new MessageEmbed()
                         .setColor("RANDOM")
