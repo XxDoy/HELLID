@@ -93,11 +93,6 @@ client.on("ready", () => {
                         .attachFiles(attachment)
                         .setTimestamp()
                         .setFooter(`Kamu Member Ke ${member.guild.memberCount}`)
-
-                        let data = await canva.welcome(member, { link: "https://wallpapercave.com/wp/wp5128415.jpg" })
- 
-                        const attachment = new MessageAttachment(data,"welcome-image.png"
-                        );
                     
                         Channels.send(`Welcome to HELLFIRE, <@${member.user.id}>!`,`${member.guild.memberCount}`,attachment
                         );
