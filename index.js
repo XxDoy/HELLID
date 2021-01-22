@@ -18,6 +18,7 @@ const TIME = 7000;
 const DIFF = 3000;
 const currentDate = new Date();
 const firstMessage = require('./firstmessage')
+const memberCounter = require('./memcounter')
 
 const client = new Client({
     disableEveryone: true
