@@ -22,6 +22,7 @@ const kisses = [
     'https://neko-love.xyz/v1/neko/neko-love_103.png',
     'https://neko-love.xyz/v1/neko/neko-love_287.jpg',
     'https://neko-love.xyz/v1/neko/neko-love_243.png',
+    'https://neko-love.xyz/v1/neko/neko-love_243.png',
 ];
 
 module.exports = {
