@@ -20,7 +20,7 @@ module.exports = {
         return message.channel.send(`
         'hrc!send (user) (informasi) (angka) 
         **EXAMPLE:**
-        h?msg @thebluerose #partner 60'`).then(m => m.delete({ timeout: 5000 }));
+        h?msg @Yaza#9481 #partner 60'`).then(m => m.delete({ timeout: 5000 }));
     }
 
 
@@ -60,7 +60,7 @@ module.exports = {
             inline: false
         })
         .setTimestamp()
-        .setFooter(`STAFF : ***${message.author.username}***`)
+        .setFooter(`STAFF : ${message.author.username}`)
 
     if (rMember) {
         var Msg1 = await message.channel.send(mgs); // sends message
