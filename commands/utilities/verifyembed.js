@@ -3,6 +3,7 @@ const { MessageEmbed } = require("discord.js")
 module.exports = {
     name: "verifyembed",
     category: "utilites",
+    aliases: "vmbed, vembed",
     timeout: 10000,
     run: async(client, message, args) => {
     

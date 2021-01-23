@@ -8,8 +8,8 @@ module.exports = {
         const embed = new MessageEmbed()
     .setColor("RANDOM")
     .setTitle("PIC LIST")
-    .setDescription("***Use a? (command)***")
-    .addField('➤`| waifu`\n➤`| neko`\n➤`| cat`\n➤`| dog`\n➤`| panda`\n➤`| fox`\n➤`| koala`')
+    .setDescription("***Use h? (command)***")
+    .addFields('➤`| waifu`\n➤`| neko`\n➤`| cat`\n➤`| dog`\n➤`| panda`\n➤`| fox`\n➤`| koala`')
     .setFooter(`Requested by ${message.author.username}`);
     
     await message.channel.send(embed)       
