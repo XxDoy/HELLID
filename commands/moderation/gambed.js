@@ -24,7 +24,7 @@ if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(
 
     if (textChannel) {
         const announcement = new MessageEmbed()
-            .setTitle('<aGA:798883982036172832> GIVEAWAY <a:GA:798883982036172832>')
+            .setTitle('<a:GA:798883982036172832> GIVEAWAY <a:GA:798883982036172832>')
             .setDescription(`${announ}`)
             .setColor("RANDOM")
             .setTimestamp()
