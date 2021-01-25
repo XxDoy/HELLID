@@ -30,15 +30,6 @@ module.exports = {
 
     if (!rMember) return message.reply("Couldn't find that person").then(m => m.delete({ timeout: 5000 }));
 
-    if (!textChannel) return message.channel.send(`Tag Channel Yang Bener Kasian Di DM Invalid :)`)
-
-    if (!tertuju | !Number(angka)) {
-        return message.channel.send(`
-        'hrc!send (user) (pesan)
-        **EXAMPLE:**
-        h?msg @Yaza#9481 Apa Kabar?'`).then(m => m.delete({ timeout: 5000 }));
-    }
-
 
     const mgs = new MessageEmbed()
         .setDescription(`Requested By ${message.author.username}.......`)
