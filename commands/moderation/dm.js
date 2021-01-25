@@ -50,11 +50,10 @@ module.exports = {
         .setDescription(`<a:at_verifblack:781014376978055188> | ***${rMember} Done, Check Your Dm!!***`)
 
     const embed = new MessageEmbed()
-        .setTitle(`${message.guild.name}`)
+        .setTitle(`New Message`)
         .setThumbnail(avatar)
         .setColor("RED")
         .addFields({
-            name: `MESSAGE`,
             value: `${msgs}`,
             inline: false
         })
