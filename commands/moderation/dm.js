@@ -53,7 +53,7 @@ module.exports = {
         .setTitle(`New Message`)
         .setThumbnail(avatar)
         .setColor("RED")
-        .addDescription(`${msgs}`)
+        .setDescription(`${msgs}`)
         .setTimestamp()
         .setFooter(`FROM : ${message.author.username}`)
 
