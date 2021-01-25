@@ -24,7 +24,7 @@ if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(
 
     if (textChannel) {
         const announcement = new MessageEmbed()
-            .setTitle(`${announ} CLAIMED <:checklist:801435724636880936>`)
+            .setDescription(`${announ} ***CLAIMED*** <a:checklist:801435724636880936>`)
             .setColor("RANDOM")
             .setTimestamp()
         textChannel.send(announcement).then((message) => {
