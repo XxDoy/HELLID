@@ -6,7 +6,6 @@ module.exports = {
     category: "utilites",
     run: async(client, message, args) => {
 
-        message.delete(5000)
         const msg = client.snipes.get(message.channel.id)
         if (!msg) return message.channel.send("no recently deleted messages!")
         const embed = new MessageEmbed()
