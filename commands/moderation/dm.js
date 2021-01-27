@@ -16,7 +16,7 @@ module.exports = {
             user = message.author;
         }
 
-        let avatar = user.displayAvatarURL({ size: 4096, dynamic: true });
+        let avatar = message.author.displayAvatarURL({ size: 4096, dynamic: true });
 
 
     let rMember = message.mentions.members.first() || message.guild.members.get(args[0]);
