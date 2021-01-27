@@ -9,7 +9,7 @@ module.exports = {
 
         const avatar = message.author.displayAvatarURL({ size: 4096, dynamic: true });
 
-        const msg = client.snipes.get(message.channel.id);
+        const msg = client.snipes.cache.get(message.channel.id);
         if (!msg) return message.reply("no recently deleted messages!");
 
         const embed = new MessageEmbed()
