@@ -6,6 +6,9 @@ module.exports = {
     category: "utilites",
     cooldown: 20,
     run: async(client, message, args) => {
+
+        this.interval = setInterval(() => this.msg(), 5000);
+
         let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
 
         const avatar = message.author.displayAvatarURL({ size: 4096, dynamic: true });
