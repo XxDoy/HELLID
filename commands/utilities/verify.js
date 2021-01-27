@@ -19,7 +19,7 @@ module.exports = {
     let embed = new MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`${message.author.username}`)
-            .setDescription('<a:checklist:801435724636880936>  ||  **Successfully Verified!!**\n\n```EXAMPLE : h?verify```')
+            .setDescription('<a:checklist:801435724636880936>  ||  **Successfully Verified!!**\n\n\`\`\`css\nEXAMPLE : h?verify\`\`\`')
             .setTimestamp()
             .setFooter(`${message.author.username}`, avatar)
         await message.channel.send(embed)

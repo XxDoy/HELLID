@@ -24,8 +24,7 @@ const client = new Client({
     disableEveryone: true
 })
 
-client.editedMessage = new Collection();
-client.deletedMessages = new Collection();
+client.messageDelete = new Collection();
 client.commands = new Collection();
 client.aliases = new Collection();
 client.config1 = config;
