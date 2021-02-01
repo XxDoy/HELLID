@@ -94,7 +94,7 @@ client.on("ready", () => {
                         .setTimestamp()
                         .setFooter(`Kamu Member Ke ${member.guild.memberCount}`)
                     
-                        Channels.send(`HELLFIRE ━━━━━━━━━━━|\n\nHello <@${member.user.id}>\n\nWelcome To **${member.guild.name}**\n━━━━━━━━━━━━━━━━━━━\n\nDon\'t Forget To Read :\n<#>\n<#>\n━━━━━━━━━━━━━━━━━━━\n\nDon\'t Forget To Take Roles :\n<#>\n━━━━━━━━━━━━━━━━━━━\n\n Don\'t Forget To Intro In :\n<#>\n━━━━━━━━━━━━━━━━━━━`);
+                        Channels.send(`HELLFIRE ━━━━━━━━━━━|\n\nHello <@${member.user.id}>\n\nWelcome To **${member.guild.name}**\n━━━━━━━━━━━━━━━━━━━\n\nDon\'t Forget To Read :\n<#798631631639281734>\n<#798625809241341962>\n━━━━━━━━━━━━━━━━━━━\n\nDon\'t Forget To Take Roles :\n<#798908298882580511>\n━━━━━━━━━━━━━━━━━━━\n\n Don\'t Forget To Intro In :\n<#798626934028238919>\n━━━━━━━━━━━━━━━━━━━`);
 
                         Channels.send(embed)
 
