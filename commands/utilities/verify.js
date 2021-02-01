@@ -23,6 +23,7 @@ module.exports = {
             .setTimestamp()
             .setFooter(`${message.author.username}`, avatar)
         await message.channel.send(embed)
+        message.author.sendMessage("Thank You For Verify, Don\'t Forget To Read <#798631631639281734>")
         message.delete()
     return;
     
