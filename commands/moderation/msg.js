@@ -5,7 +5,7 @@ module.exports = {
     category: "moderation",
     run: async (client, message, args) => {
 
-    let rMember = message.mentions.members.first() || message.guild.members.get(args[0]);
+    let rMember = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 
     let textChannel = message.mentions.channels.first()
 

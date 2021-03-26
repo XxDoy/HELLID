@@ -1,7 +1,6 @@
 {
   "name": "hellfire",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -41,5 +40,14 @@
   "engines": {
     "node": "12.x"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XxDoy/HELLID.git"
+  },
+  "bugs": {
+    "url": "https://github.com/XxDoy/HELLID/issues"
+  },
+  "homepage": "https://github.com/XxDoy/HELLID#readme",
+  "description": ""
 }

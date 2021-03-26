@@ -19,7 +19,7 @@ module.exports = {
         let avatar = message.author.displayAvatarURL({ size: 4096, dynamic: true });
 
 
-    let rMember = message.mentions.members.first() || message.guild.members.get(args[0]);
+    let rMember = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 
     let textChannel = message.mentions.channels.first()
 
@@ -53,7 +53,7 @@ module.exports = {
         .setTitle(`New Message`)
         .setThumbnail(avatar)
         .setColor("RED")
-        .setDescription(`${msgs}`)
+        .setDescription(`✉️ : \n${msgs}`)
         .setTimestamp()
         .setFooter(`FROM : ${message.author.username}`)
 

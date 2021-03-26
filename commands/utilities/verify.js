@@ -10,11 +10,11 @@ module.exports = {
 
         const avatar = message.author.displayAvatarURL({ size: 4096, dynamic: true });
 
-        if (message.channel.id !== "798808092426240021") {
+        if (message.channel.id !== "824957970688245760") {
             return;
         }
 
-    await message.member.roles.add("752367087409823775");
+    await message.member.roles.add("824958076825239582");
 
     let embed = new MessageEmbed()
             .setColor('RANDOM')

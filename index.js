@@ -54,7 +54,7 @@ client.on("ready", () => {
     // Canvas Welcome
     client.on('guildMemberAdd', async(member) => { // this event gets triggered when a new member joins the server!
 
-        const Channels = member.guild.channels.cache.get('798631082182180874') //insert channel id that you want to send to
+        const Channels = member.guild.channels.cache.get('824923451483095060') //insert channel id that you want to send to
         let data = await canva.welcome(member, { link: 'https://wallpapercave.com/wp/wp5128415.jpg', blur:  true})
         const canvas = Canvas.createCanvas(900, 250);
         const ctx = canvas.getContext('2d');
