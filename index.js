@@ -17,6 +17,8 @@ const LIMIT = 5;
 const TIME = 7000;
 const DIFF = 3000;
 const currentDate = new Date();
+const request = require('request-promise');
+const cheerio = require('cheerio');
 const firstMessage = require('./firstmessage')
 const memberCounter = require('./memcounter')
 
@@ -197,6 +199,22 @@ client.on("ready", () => {
               }
             })
             });
+
+            client.on("message", async message => {
+                if(message.author.bot || message.channel.type === "dm") return;
+            
+                let messageArray = message.content.split(" ");
+                let cmd = messageArray[0];
+                let args = message.content.substring(message.content.indexOf(' ')+1);
+            
+                if (cmd === '?subs'){
+                    let youtubechannelurl = 'http://youtube.com/dashcraft123';
+                    let response = await request(youtubechannelurl)
+                    let $ = cheerio.load(response)
+                    let subscriberCount = $('[class="yt-subscription-button-subscriber-count-branded-horizontal subscribed yt-uix-tooltip"]').attr('title');
+                    message.reply(`DashCraft Has ${subscriberCount} on YouTube!`)
+                }
+            })
 
 // jangan pernah naruh command atau apapun dibawah ini karena script ini menentukan antar file jadi wajib diatas biar berfungsi
 
