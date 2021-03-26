@@ -45,7 +45,7 @@ client.on("ready", () => {
     const guild = client.guilds.cache.get("824922754829647882");
 
     let statuses = [
-        `h?help | ${guild.memberCount} DOYLAND Members`
+        `h?help | ${guilds.cache.reduce((a, g) => a + g.memberCount, 0)} DOYLAND Members`
         `h?help | SUBSCRIBE Ridho Revaldy Channels`
     ];
 
