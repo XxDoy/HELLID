@@ -41,7 +41,8 @@ client.on("ready", () => {
     console.log(`Bot Ready Up \n1 \n2 \n3 \nReady To Duty ${client.user.username} !`);
 
     let statuses = [
-        `h?help | ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} HELLFIRE Members`
+        `h?help | ${guild.memberCount} DOYLAND Members`
+        `h?help | SUBSCRIBE Ridho Revaldy Channels`
     ];
 
     setInterval(function() {
