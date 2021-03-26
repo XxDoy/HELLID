@@ -42,10 +42,10 @@ config({
 client.on("ready", () => {
     console.log(`Bot Ready Up \n1 \n2 \n3 \nReady To Duty ${client.user.username} !`);
 
-    const guild = client.guilds.cache.get("824922754829647882");
+
 
     let statuses = [
-        `h?help | ${guilds.cache.reduce((a, g) => a + g.memberCount, 0)} DOYLAND Members`
+        `h?help | ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} DOYLAND Members`
         `h?help | SUBSCRIBE Ridho Revaldy Channels`
     ];
 
