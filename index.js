@@ -42,6 +42,8 @@ config({
 client.on("ready", () => {
     console.log(`Bot Ready Up \n1 \n2 \n3 \nReady To Duty ${client.user.username} !`);
 
+    const guild = client.guilds.cache.get("824922754829647882");
+
     let statuses = [
         `h?help | ${guild.memberCount} DOYLAND Members`
         `h?help | SUBSCRIBE Ridho Revaldy Channels`
