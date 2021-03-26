@@ -197,7 +197,6 @@ client.on("ready", () => {
               }
             })
             });
-            
 
 // jangan pernah naruh command atau apapun dibawah ini karena script ini menentukan antar file jadi wajib diatas biar berfungsi
 
