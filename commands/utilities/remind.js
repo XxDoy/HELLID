@@ -16,7 +16,7 @@ module.exports = {
     if(!reason) return message.reply(":x: You Should Enter Reason")
 
     db.set(`remind.${message.author.id}`,Date.now() + ms(timeuser))
-    message.channel.send(`I will Remind You, <@${user.user.id}>`)
+    message.channel.send(`<@${user.user.id}>, I will Remind You ${reason} in ${timeuser}`)
     const interval = setInterval(function() {
 
 
