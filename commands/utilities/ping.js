@@ -17,6 +17,6 @@ module.exports = {
         .setColor("RANDOM")
         .setTimestamp()
         
-        msg.edit(msg).then()) => message.channel.send(embed)
+        msg.edit(msg).then(() => message.channel.send(embed))
     }
 }
