@@ -7,13 +7,15 @@ module.exports = {
     run: async(client, message, args) => {
 
         const latency = msg.createdTimestamp - message.createdTimestamp;
+        const choices = ['Is this really my ping?', 'Is this okay? I can\'t look!', 'I hope it isn\'t bad!'];
+        const response = choices[Math.floor(Math.random() * choices.length)];
 
         const embed = new MessageEmbed()
-        .setTitle(`Ping`)
-        .setDescription(`Bot Latency: \`${latency}ms\``)
+        .setTitle(`${message.author.username} Ping`)
+        .setDescription(`${response} - Bot Latency: \`${latency}ms\``)
         .setColor("RANDOM")
         .setTimestamp()
         
-        return message.channel.send(embed)
+        await message.channel.send(embed)
     }
 }
