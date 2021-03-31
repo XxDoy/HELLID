@@ -42,7 +42,7 @@ module.exports = {
     const embed = new MessageEmbed()
         .setColor('RANDOM')
         .setDescription(`This Waifu For You ${message.author.username}`)
-        .setImage(waifu[Math.floor(Math.random() * kisses.length)])
+        .setImage(waifu[Math.floor(Math.random() * waifu.length)])
     return message.channel.send(embed)
 
 }
