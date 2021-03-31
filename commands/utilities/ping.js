@@ -5,7 +5,6 @@ module.exports = {
     category: "info",
     description: "Returns Latency and API Pings",
     run: async(client, message, args) => {
-        const msg = await message.channel.send('Pinging...');
 
         const latency = msg.createdTimestamp - message.createdTimestamp;
         const choices = ['Is this really my ping?', 'Is this okay? I can\'t look!', 'I hope it isn\'t bad!'];
@@ -17,6 +16,6 @@ module.exports = {
         .setColor("RANDOM")
         .setTimestamp()
         
-        msg.edit(msg).then(() => message.channel.send(embed))
+        return message.channel.send(embed)
     }
 }
