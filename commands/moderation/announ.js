@@ -33,7 +33,7 @@ if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(
         textChannel.send(announcement).then((message) => {
             
             })
-        message.channel.send("Sending Your Announcement to " + `<#${textChannel}>`)
+        message.channel.send("Sending Your Announcement to " + `${textChannel}`)
        }
     }
 }
