@@ -59,7 +59,7 @@ client.on("ready", () => {
     // Canvas Welcome
     client.on('guildMemberAdd', async(member) => { // this event gets triggered when a new member joins the server!
 
-        const Channels = member.guild.channels.cache.get('824922754829647885') //insert channel id that you want to send to
+        const Channels = member.guild.channels.cache.get('824923451483095060') //insert channel id that you want to send to
         let data = await canva.welcome(member, { link: 'https://wallpapercave.com/wp/wp5128415.jpg', blur:  true})
         const canvas = Canvas.createCanvas(900, 250);
         const ctx = canvas.getContext('2d');
@@ -94,7 +94,7 @@ client.on("ready", () => {
             const embed = new MessageEmbed()
                         .setColor("RANDOM")
                         .setAuthor(member.user.username, member.user.avatarURL())
-                        .setDescription(`HELLFIRE ━━━━━━━━━━━|\n\nHello <@${member.user.id}>\n\nWelcome To **${member.guild.name}**\n━━━━━━━━━━━━━━━━━━━\n\nDon\'t Forget To Read :\n<#824923025324769280>\n━━━━━━━━━━━━━━━━━━━\n\nDon\'t Forget To Take Roles :\n<#824923138021130260>\n━━━━━━━━━━━━━━━━━━━\n\n Don\'t Forget To Intro In :\n<#824923086234976257>\n━━━━━━━━━━━━━━━━━━━`)
+                        .setDescription(`**DOYLAND** ━━━━━━━━━━━|\n\nHello <@${member.user.id}>\n\nWelcome To **${member.guild.name}**\n━━━━━━━━━━━━━━━━━━━\n\nDon\'t Forget To Read :\n<#824923025324769280>\n━━━━━━━━━━━━━━━━━━━\n\nDon\'t Forget To Take Roles :\n<#824923138021130260>\n━━━━━━━━━━━━━━━━━━━\n\n Don\'t Forget To Intro In :\n<#824923086234976257>\n━━━━━━━━━━━━━━━━━━━`)
                         .setImage("attachment://welcome-image.png")
                         .attachFiles(attachment)
                         .setTimestamp()

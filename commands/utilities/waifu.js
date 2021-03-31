@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const kisses = [
+const waifu = [
     'https://cdn.discordapp.com/attachments/753213573831983138/781005397421981766/9k.png',
     'https://cdn.discordapp.com/attachments/753213573831983138/781005626196361226/2Q.png',
     'https://e7n9s5t9.stackpathcdn.com/esports/wp-content/uploads/2020/07/ezra-e1595333437395.png',
@@ -23,6 +23,14 @@ const kisses = [
     'https://neko-love.xyz/v1/neko/neko-love_287.jpg',
     'https://neko-love.xyz/v1/neko/neko-love_243.png',
     'https://neko-love.xyz/v1/neko/neko-love_243.png',
+    'https://cdn.discordapp.com/attachments/799858149460672512/826613344424820746/1775.jpg',
+    'https://www.anicube.net/data/goods/16/09/30/1000004796/1000004796_detail_057.jpg',
+    `https://besthqwallpapers.com/Uploads/30-11-2019/113628/thumb2-kurumi-tokisaki-4k-date-a-live-manga-artwork.jpg`,
+    'https://wallpaperaccess.com/full/1106790.jpg',
+    'https://i.redd.it/mcxl36znx2j21.jpg',
+    'https://i1.sndcdn.com/avatars-000693503726-5cxo1w-t500x500.jpg',
+    'https://wallpapercave.com/wp/wp4304700.jpg',
+
 ];
 
 module.exports = {
@@ -31,11 +39,11 @@ module.exports = {
     timeout: 10000,
     run: async(client, message, args) => {
 
-    const kiss = new MessageEmbed()
+    const embed = new MessageEmbed()
         .setColor('RANDOM')
         .setDescription(`This Waifu For You ${message.author.username}`)
-        .setImage(kisses[Math.floor(Math.random() * kisses.length)])
-    return message.channel.send(kiss)
+        .setImage(waifu[Math.floor(Math.random() * kisses.length)])
+    return message.channel.send(embed)
 
 }
 }
