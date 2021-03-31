@@ -1,4 +1,4 @@
-const MessageEmbed = require('discord.js')
+const { MessageEmbed } = require('discord.js')
 
 module.exports = {
     name: "ping",
@@ -17,6 +17,6 @@ module.exports = {
         .setColor("RANDOM")
         .setTimestamp()
         
-        msg.edit(embed)
+        msg.edit(msg).then()) => message.channel.send(embed)
     }
 }
