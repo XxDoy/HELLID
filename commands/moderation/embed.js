@@ -8,7 +8,7 @@ module.exports = {
 
 if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('You can\'t use that.');
 
-    let announ = args.slice(1).join("  ");
+    let announ = args.slice(1).join(" ");
     let textChannel = message.mentions.channels.first()
     message.delete()
 
@@ -31,7 +31,7 @@ if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(
         textChannel.send(announcement).then((message) => {
             
             })
-        message.channel.send("Sending Your Announcement to " + `<#${textChannel}>`)
+        message.channel.send("Sending Your Announcement to " + `${textChannel}`)
        }
     }
 }
