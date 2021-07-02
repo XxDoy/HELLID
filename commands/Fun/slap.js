@@ -26,7 +26,7 @@ module.exports = {
     .setImage(kisses[Math.floor(Math.random() * kisses.length)])
     .setDescription(`${message.author.username} **SLAP** <@${client.user.id}>`)
 
-    if (!user) return message.channel.send('Hmm... i think you gotta provide a valid user to slap');
+    if (!user) return message.channel.send(embed);
 
     const kiss = new MessageEmbed()
         .setColor('RANDOM')
