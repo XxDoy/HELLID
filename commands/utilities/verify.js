@@ -1,4 +1,5 @@
 const { Discord, MessageEmbed } = require("discord.js");
+const msg = require("../moderation/msg");
 
 module.exports = {
     name: "verify",
@@ -6,9 +7,7 @@ module.exports = {
     cooldown: 20,
     timeout: 5000,
     run: async(client, message, args) => {
-        if (message.deletable) message.delete({
-            timeout: 4000
-        })
+
 
         let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
         let rMember = message.guild.members.cache.get(args[0]);
@@ -35,11 +34,8 @@ const msg3 = new MessageEmbed()
 
 const msg4 = new MessageEmbed()
     .setDescription("**Done**")
-
- const msg5 = new MessageEmbed()
-    .setDescription(`***${message.author.username} You Has Been Verified***`)
-
-    let embed = new MessageEmbed()
+    
+const msg5 = new MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`${message.author.username}`)
             .setDescription('**Successfully Verified!!**')
@@ -52,9 +48,11 @@ const msg4 = new MessageEmbed()
                 Msg1.edit(msg2)
                 Msg1.edit(msg3)
                 Msg1.edit(msg4)
-                Msg1.edit(msg5).then(() => message.author.send(embed))
+                Msg1.edit(msg5).then(() => message.author.send(msg5))
+         
+
     
-        message.delete()
+        message.delete({ timeout: 5000 })
     return;
     
     }
