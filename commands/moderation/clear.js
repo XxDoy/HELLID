@@ -4,6 +4,8 @@ module.exports = {
     cateogry: "moderation",
     description: "deleting message",
     run: async(client, message, args) => {
+    const member = message.mentions.member.first();
+    const message = message.channel.messages.fetch();
 
     if (member) {
         const userMessages = (await message).filter(
