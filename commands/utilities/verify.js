@@ -4,7 +4,11 @@ module.exports = {
     name: "verify",
     category: "utilites",
     cooldown: 20,
+    timeout: 5000,
     run: async(client, message, args) => {
+        if (message.deletable) message.delete({
+            timeout: 4000
+        })
 
         let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
         let rMember = message.guild.members.cache.get(args[0]);
@@ -32,9 +36,8 @@ const msg3 = new MessageEmbed()
 const msg4 = new MessageEmbed()
     .setDescription("**Done**")
 
-    setTimeout(() => { const msg5 = new MessageEmbed()
+ const msg5 = new MessageEmbed()
     .setDescription(`***${message.author.username} You Has Been Verified***`)
-}, 5000)
 
     let embed = new MessageEmbed()
             .setColor('RANDOM')
