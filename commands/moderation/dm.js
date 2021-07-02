@@ -30,19 +30,19 @@ module.exports = {
         .setDescription(`Requested By ${message.author.username}.......`)
 
     const msg1 = new MessageEmbed()
-        .setDescription("**Loading**")
+        .setDescription("**Loading...**")
 
     const msg2 = new MessageEmbed()
-        .setDescription("<a:at_loading:782088166470451241>")
+        .setDescription("**loading....**")
 
     const msg3 = new MessageEmbed()
-        .setDescription("<a:at_loading:782088166470451241>")
+        .setDescription("**Loading.....**")
 
     const msg4 = new MessageEmbed()
-        .setDescription("Done <a:at_verifblack:781014376978055188>")
+        .setDescription("**Done**")
 
     const msg5 = new MessageEmbed()
-        .setDescription(`<a:at_verifblack:781014376978055188> | ***${rMember} Done, Check Your Dm!!***`)
+        .setDescription(`***${rMember} Message has been sent***`)
 
     const embed = new MessageEmbed()
         .setTitle(`New Message`)
@@ -50,7 +50,7 @@ module.exports = {
         .setColor("RED")
         .setDescription(`✉️ :  ${msgs}`)
         .setTimestamp()
-        .setFooter(`FROM : ${message.author.username}#${user.user.discriminator}`)
+        .setFooter(`FROM : ${message.author.username}`)
 
     if (rMember) {
         var Msg1 = await message.channel.send(mgs); // sends message
