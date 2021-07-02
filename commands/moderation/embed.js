@@ -24,8 +24,8 @@ if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(
     if (textChannel) {
         const announcement = new MessageEmbed()
             .setTitle(`${message.guild.name}`)
+            .setThumbnail(guild.iconURL())
             .setDescription(`${announ}`)
-            .setThumbnail(message.guild.iconURL({ dynamic: true }))
             .setColor("RANDOM")
             .setTimestamp()
         textChannel.send(announcement).then((message) => {
