@@ -24,7 +24,6 @@ module.exports = {
             .setThumbnail(avatar)
             .setTimestamp()
             .setFooter(`${message.author.username}`);
-            client.users.cache.get('id').send(embed)
             message.author.send(embed)
         message.delete()
     return;
