@@ -1,22 +1,21 @@
 const { MessageEmbed } = require('discord.js')
-const prefix = require("../../index")
+const prefix = require("h?")
 module.exports = {
-    name: "gambed",
+    name: "embed",
     description: "Make a Custome GiveAway Embed",
 
     async run (client, message, args){
 
 if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('You can\'t use that.');
 
-    let announ = args.slice(1).join(" ");
+    let announ = args.slice(1).join("  ");
     let textChannel = message.mentions.channels.first()
     message.delete()
 
     if (!announ) {
         let embed = new MessageEmbed()
-            .setTitle('HELLFIRE')
-            .setAuthor(`${message.guild.name}`)
-            .addField('Example', `__***${prefix}announ (channels) (message)***__`)
+            .setTitle(`${message.guild.name}`)
+            .addField('Example', `**${prefix}announ #channels (message)**`)
             .setFooter(`Requested by ${message.author.username}`)
             .setColor('BLACK')
         return message.channel.send(embed)
@@ -24,14 +23,15 @@ if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(
 
     if (textChannel) {
         const announcement = new MessageEmbed()
-            .setTitle('<a:GA:798883982036172832> GIVEAWAY <a:GA:798883982036172832>')
-            .setDescription(`\`\`\`css\n${announ} \`\`\``)
+            .setTitle(`${message.guild.name}`)
+            .setDescription(`${announ}`)
+            .setThumbnail(message.guild.iconURL({ dynamic: true }))
             .setColor("RANDOM")
             .setTimestamp()
         textChannel.send(announcement).then((message) => {
             
             })
-        message.channel.send("Sending Your Announcement to " + textChannel)
+        message.channel.send("Sending Your Announcement to " + `<#${textChannel}>`)
        }
     }
 }
