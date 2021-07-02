@@ -49,7 +49,9 @@ const msg5 = new MessageEmbed()
                 Msg1.edit(msg3)
                 Msg1.edit(msg4)
                 Msg1.edit(msg5).then(() => message.author.send(embed))
+    
         message.delete()
+        setInterval
     return;
     
     }
