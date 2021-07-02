@@ -18,7 +18,7 @@ module.exports = {
             response = await axios.get(url);
             data = response.data;
         } catch (e) {
-            return message.channel.send(`hmm... i thik you gotta provide a valid user to pat`)
+            return message.channel.send(`hmm... i think you gotta provide a valid user to pat`)
         }
 
         const embed = new MessageEmbed()

@@ -12,7 +12,13 @@ module.exports = {
     timeout: 10000,
     run: async(client, message, args) => {
         const user = message.mentions.users.first();
-        if (!user) return message.reply('You Must Mention Someone To Use This Command');
+
+        const embed = new MessageEmbed()
+        .setColor('RANDOM')
+        .setImage(kisses[Math.floor(Math.random() * kisses.length)])
+        .setDescription(`${client.user.username} **BAKA!!!**`)
+
+        if (!user) return message.reply(embed);
 
     const kiss = new MessageEmbed()
         .setColor('RANDOM')

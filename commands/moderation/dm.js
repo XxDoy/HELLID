@@ -21,11 +21,6 @@ module.exports = {
 
     let rMember = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 
-    let textChannel = message.mentions.channels.first()
-
-    let tertuju = args[1]
-    let angka = args[2]
-
     let msgs = args.slice(1).join(" ");
 
     if (!rMember) return message.reply("Couldn't find that person").then(m => m.delete({ timeout: 5000 }));
@@ -53,9 +48,9 @@ module.exports = {
         .setTitle(`New Message`)
         .setThumbnail(avatar)
         .setColor("RED")
-        .setDescription(`✉️ : \n${msgs}`)
+        .setDescription(`✉️ :  ${msgs}`)
         .setTimestamp()
-        .setFooter(`FROM : ${message.author.username}`)
+        .setFooter(`FROM : ${message.author.username}#${user.user.discriminator}`)
 
     if (rMember) {
         var Msg1 = await message.channel.send(mgs); // sends message

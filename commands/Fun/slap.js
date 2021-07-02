@@ -10,7 +10,8 @@ const kisses = [
     'https://i.imgur.com/o2SJYUS.gif',
     'https://media1.tenor.com/images/af36628688f5f50f297c5e4bce61a35c/tenor.gif',
     'https://media1.tenor.com/images/07b4516d50406b4a320269d514876170/tenor.gif',
-    'https://media1.tenor.com/images/0f458cf28fc7ee25fa48d7d730fddf6d/tenor.gif'
+    'https://media1.tenor.com/images/0f458cf28fc7ee25fa48d7d730fddf6d/tenor.gif',
+    'https://cdn.weeb.sh/images/HkHCm1twZ.gif'
 ];
 // ini loh dari kemaren koe gapaham harus isi module.exports = {} baru ikutin kek yang sesudahnya. dari kemaren aku udah liatin njer itu, koenya gapeka :v, masa kalo ama hany bisa peka ama coding ga wkwkwkw
 module.exports = {
@@ -24,14 +25,14 @@ module.exports = {
     const embed = new MessageEmbed()
     .setColor('RANDOM')
     .setImage(kisses[Math.floor(Math.random() * kisses.length)])
-    .setDescription(`${message.author.username} **SLAP** <@${client.user.id}>`)
+    .setDescription(`${message.author.username} **SLAP** ${client.user.username}`)
 
     if (!user) return message.channel.send(embed);
 
     const kiss = new MessageEmbed()
         .setColor('RANDOM')
         .setImage(kisses[Math.floor(Math.random() * kisses.length)])
-        .setDescription(`${message.author.username} **SLAP** ${user.username}!`)
+        .setDescription(`**${message.author.username}** SLAP **${user.username}**!`)
     return message.channel.send(kiss)
 
 }

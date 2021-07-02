@@ -10,9 +10,11 @@ module.exports = {
         const url = 'https://some-random-api.ml/animu/hug';
         let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
 
-        const avatar = message.author.displayAvatarURL({ size: 4096, dynamic: true });
+        const embed = new MessageEmbed()
+        .setAuthor(`${message.author.username} hugs ${client.user.username}`)
+        .setImage(data.link)
 
-        if (!args[0]) return message.channel.send('Hmm... i think you gotta provide a valid user to Hug');
+        if (!args[0]) return message.channel.send(embed);
 
         let response, data;
         try {
@@ -22,10 +24,10 @@ module.exports = {
             return message.channel.send(`An error occured!`)
         }
 
-        const embed = new MessageEmbed()
-            .setAuthor(`${message.author.username} hugs ${message.mentions.users.first().username || message.mentions.members.first()}`, avatar)
+        const hug = new MessageEmbed()
+            .setAuthor(`${message.author.username} hugs ${message.mentions.users.first().username}`)
             .setImage(data.link)
 
-        await message.channel.send(embed)
+        await message.channel.send(hug)
     }
 }

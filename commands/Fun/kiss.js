@@ -12,6 +12,7 @@ const kisses = [
     'https://media.giphy.com/media/QGc8RgRvMonFm/giphy.gif',
     'https://media.giphy.com/media/NhuUvzNdoHA0o6F5fP/giphy.gif',
     'https://images-ext-2.discordapp.net/external/fu5fwqE3EBaQYUVI9TE6QRMyATAm_R2CH-nwfyoHcio/https/cdn.weeb.sh/images/HJ5khTOP-.gif',
+    'https://cdn.weeb.sh/images/SJ3dXCKtW.gif',
 ];
 module.exports = {
     name: "kiss",
@@ -20,7 +21,13 @@ module.exports = {
     timeout: 10000,
     run: async(client, message, args) => {
     const user = message.mentions.users.first();
-    if (!user) return message.channel.send('hmm... i think you gotta provide a valid user to kiss');
+
+    const embed = new MessageEmbed()
+    .setColor('RANDOM')
+    .setImage(kisses[Math.floor(Math.random() * kisses.length)])
+    .setDescription(`${message.author.username} ***kissed*** ${client.user.username}!`)
+
+    if (!user) return message.channel.send(embed);
 
     const kiss = new MessageEmbed()
         .setColor('RANDOM')

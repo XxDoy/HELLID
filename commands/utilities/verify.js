@@ -7,6 +7,7 @@ module.exports = {
     run: async(client, message, args) => {
 
         let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
+        let rMember = message.guild.members.cache.get(args[0]);
 
         const avatar = message.author.displayAvatarURL({ size: 4096, dynamic: true });
 
@@ -19,11 +20,11 @@ module.exports = {
     let embed = new MessageEmbed()
             .setColor('RANDOM')
             .setTitle(`${message.author.username}`)
-            .setDescription('**Successfully Verified!!**\n\n IF HAVE PROBLEM DM <@637533978982612992> \n\n\`\`\`css\nEXAMPLE : h?verify\`\`\`')
+            .setDescription('**Successfully Verified!!**')
             .setThumbnail(avatar)
             .setTimestamp()
-            .setFooter(`${message.author.username}`)
-        await message.channel.send(embed)
+            .setFooter(`${message.author.username}`);
+            client.users.cache.get('id').send(embed)
         message.delete()
     return;
     

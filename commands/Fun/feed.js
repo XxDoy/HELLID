@@ -16,7 +16,13 @@ module.exports = {
     timeout: 10000,
     run: async(client, message, args) => {
     const user = message.mentions.users.first();
-    if (!user) return message.channel.send('Hmm... i think you gotta provide a valid user to feed');
+
+    const embed = new MessageEmbed()
+    .setColor('RANDOM')
+    .setImage(kisses[Math.floor(Math.random() * kisses.length)])
+    .setDescription(`${message.author.username} ***FEED*** ${client.user.username}!`)
+
+    if (!user) return message.channel.send(embed);
 
     const kiss = new MessageEmbed()
         .setColor('RANDOM')
