@@ -20,12 +20,18 @@ module.exports = {
     timeout: 10000,
     run: async(client, message, args) => {
     const user = message.mentions.users.first();
+
+    const embed = new MessageEmbed()
+    .setColor('RANDOM')
+    .setImage(kisses[Math.floor(Math.random() * kisses.length)])
+    .setDescription(`${message.author.username} **SLAP** <@${client.user.id}>`)
+
     if (!user) return message.channel.send('Hmm... i think you gotta provide a valid user to slap');
 
     const kiss = new MessageEmbed()
         .setColor('RANDOM')
         .setImage(kisses[Math.floor(Math.random() * kisses.length)])
-        .setDescription(`${message.author.username} ***SLAP*** ${user.username}!`)
+        .setDescription(`${message.author.username} **SLAP** ${user.username}!`)
     return message.channel.send(kiss)
 
 }
