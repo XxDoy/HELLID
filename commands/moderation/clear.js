@@ -27,7 +27,7 @@ module.exports = {
             .catch((err) => console.log(err));
             message.channel.send("Delete " + args[0] + " messages.")
     }
-        
+        setInterval
 
     },
 };
