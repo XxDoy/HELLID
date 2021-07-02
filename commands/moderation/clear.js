@@ -4,7 +4,7 @@ module.exports = {
     cateogry: "moderation",
     description: "deleting message",
     run: async(client, message, args) => {
-    const member = message.mentions.member.first();
+    const member = message.mentions.members.first();
 
     if (member) {
         const userMessages = (await message).filter(
