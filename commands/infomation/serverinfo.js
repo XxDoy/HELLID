@@ -31,7 +31,7 @@ module.exports = {
         const emojis = message.guild.emojis.cache;
 
         const embed = new MessageEmbed()
-            .setThumbnail(message.guild.iconURL({ dynamic: true }))
+            .setThumbnail(guild.iconURL())
             .setColor('RANDOM')
             .setTitle(`${message.guild.name} server stats`)
             .addFields({
