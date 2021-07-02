@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const prefix = require("h?")
+const prefix = "h?"
 module.exports = {
     name: "embed",
     description: "Make a Custome GiveAway Embed",

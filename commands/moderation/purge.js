@@ -1,30 +1,33 @@
-const { MessageEmbed } = require('discord.js');
-
 module.exports = {
     name: "purge",
-    aliases: ["clear", "purge"],
+    aliases: ["prune", "purge"],
     cateogry: "moderation",
     description: "deleting message",
-    usage: "?clear",
-    run: async(bot, message, args) => {
-        const amount = args.join(" ");
+    run: async(client, message, args) => {
+    const member = message.mentions.members.first();
 
-        if (!message.member.hasPermission("MANAGE_MESSAGE")) return message.channel.send('You can\'t use that.');
+    if (member) {
+        const userMessages = (await message).filter(
+            (m) => m.author.id === member.id
+        );
+        await message.channel.bulkDelete(userMessages);
+        message.channel.send(`${member} messages has been cleared.`)
+    } else {
+        if (!args[0])
+        return message.channel.send(
+            "Please specify a number of message to delete ranging from 1 - 99"
 
-        let deleteAmount;
-
-        if (!amount) return message.reply('please provide an amount of messages for me to delete')
-
-        if (amount > 100) return message.reply(`you cannot clear more than 100 messages at once`)
-
-        if (amount < 1) return message.reply(`you need to delete at least one message`)
-
-        await message.channel.messages.fetch({ limit: amount }).then(messages => {
-            message.channel.bulkDelete(messages)
-        });
-
-
-        message.channel.send('Success!')
-
+        );
+        if (isNaN(args[0]) > 99)
+            return message.channel.send(
+                "The Max amount of messages that i can delete is 99"
+            );
+            await message.channel
+            .bulkDelete(parseInt(args[0]) + 1)
+            .catch((err) => console.log(err));
+            message.channel.send("Delete " + args[0] + " messages.")
     }
-}
+        
+
+    },
+};
