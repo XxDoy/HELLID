@@ -26,7 +26,7 @@ if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(
         const announcement = new MessageEmbed()
             .setTitle("**NEW ANNOUNCEMENT**")
             .setDescription(`${announ}`)
-            .setThumbnail("https://media1.giphy.com/media/wZOx72LIOZcmuNdgcV/giphy.gif")
+            .setThumbnail(message.guild.iconURL({dynamic : true}))
             .setColor("RANDOM")
             .setTimestamp()
             .setFooter(`Announce By ${message.author.username}`)
