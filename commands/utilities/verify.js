@@ -5,6 +5,7 @@ module.exports = {
     category: "utilites",
     cooldown: 20,
     run: async(client, message, args) => {
+        setInterval
 
         let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
         let rMember = message.guild.members.cache.get(args[0]);
@@ -51,7 +52,6 @@ const msg5 = new MessageEmbed()
                 Msg1.edit(msg5).then(() => message.author.send(embed))
     
         message.delete()
-        setInterval
     return;
     
     }

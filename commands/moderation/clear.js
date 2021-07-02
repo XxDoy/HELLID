@@ -4,6 +4,7 @@ module.exports = {
     cateogry: "moderation",
     description: "deleting message",
     run: async(client, message, args) => {
+        setInterval
     const member = message.mentions.members.first();
 
     if (member) {
@@ -27,7 +28,7 @@ module.exports = {
             .catch((err) => console.log(err));
             message.channel.send("Delete " + args[0] + " messages.")
     }
-        setInterval
+        
 
     },
 };
