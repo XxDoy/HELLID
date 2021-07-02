@@ -5,7 +5,6 @@ module.exports = {
     category: "utilites",
     cooldown: 20,
     run: async(client, message, args) => {
-        setInterval
 
         let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
         let rMember = message.guild.members.cache.get(args[0]);
@@ -33,8 +32,9 @@ const msg3 = new MessageEmbed()
 const msg4 = new MessageEmbed()
     .setDescription("**Done**")
 
-const msg5 = new MessageEmbed()
+    setTimeout(() => { const msg5 = new MessageEmbed()
     .setDescription(`***${message.author.username} You Has Been Verified***`)
+}, 5000)
 
     let embed = new MessageEmbed()
             .setColor('RANDOM')
