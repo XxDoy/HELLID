@@ -21,27 +21,25 @@ module.exports = {
         if (member.id === message.author.id) return message.channel.send('Bruh, you can\'t ban yourself!');
 
         let reason = args.slice(1).join(" ");
+        //if (!reason) return message.channel.send("Input The Reason")
 
-        if (reason === undefined) reason = 'Unspecified';
+        if (!reason) reason = "Punya Dosa Ga ada Akhlak Sih..";
 
-        member.ban(reason)
+        const Embed = new MessageEmbed()
+            .setDescription(stripIndents `
+            **${message.author.username} Has Banned's ${member}**
+        
+                > **Target Banned : ${member}**
+                > **Banned By : ${message.author}**
+                > **Reason : ${reason}**
+                `)
+            .setTimestamp()
+
+        message.channel.send(Embed);
+
+        member.ban({ reason })
             .catch(err => {
                 if (err) return message.channel.send('***> Something went wrong <***')
             })
-
-        const embed = new MessageEmbed()
-            .setTitle("Member's Banned's")
-            .setColor("RANDOM")
-            .setTimestamp()
-            .addField("General", [
-                `**❯ User Banned:**, ${member}`,
-                `**❯ Banned by:**, ${message.author}`,
-                `**❯ reason:**, ${reason}`
-            ])
-
-        message.channel.send(embed);
-
-
-
     }
-};
+}
