@@ -217,6 +217,41 @@ client.on("ready", () => {
                 }
             })
 
+            client.afk = new Map();
+            client.on("message", async message => {
+                if (message.author.bot) return;
+                if (message.channel.type === "dm") return;
+    
+                let prefix = config.prefix;
+                let messageArray = message.content.split(" ");
+                let command = messageArray[0].toLowerCase();
+                let args = messageArray.slice(1);
+    
+                // return message.channel.send(`**${user_tag}** is currently afk. Reason: ${key.reason}`);
+                // return message.reply(`you have been removed from the afk list!`).then(msg => msg.delete(5000));
+    
+                if (message.content.includes(message.mentions.members.first())) {
+                    let mentioned = client.afk.get(message.mentions.users.first().id);
+                    if (mentioned) message.channel.send(`**${mentioned.usertag}** is currently afk. Reason: ${mentioned.reason}`);
+                }
+                let afkcheck = client.afk.get(message.author.id);
+                if (afkcheck) return [client.afk.delete(message.author.id), message.reply(`you have been removed from the afk list!`).then(msg => msg.delete(5000))];
+    
+                if (!command.startsWith(prefix)) return;
+    
+                let cmd = bot.commands.get(command.slice(prefix.length));
+                if (cmd) cmd.run(bot, message, args);
+       
+                        client.on("message", async message => {
+                            if (message.content === `${prefix}join`) {
+                                client.emit("guildMemberAdd", message.member);
+                                message.delete()
+                            }
+                        });
+             })
+    
+    
+
 // jangan pernah naruh command atau apapun dibawah ini karena script ini menentukan antar file jadi wajib diatas biar berfungsi
 
     client.on("message", async message => {
@@ -249,25 +284,9 @@ client.on("ready", () => {
             // return message.channel.send(`**${user_tag}** is currently afk. Reason: ${key.reason}`);
             // return message.reply(`you have been removed from the afk list!`).then(msg => msg.delete(5000));
 
-            if (message.content.includes(message.mentions.members.first())) {
-                let mentioned = client.afk.get(message.mentions.users.first().id);
-                if (mentioned) message.channel.send(`**${mentioned.usertag}** is currently afk. Reason: ${mentioned.reason}`);
-            }
-            let afkcheck = client.afk.get(message.author.id);
-            if (afkcheck) return [client.afk.delete(message.author.id), message.reply(`you have been removed from the afk list!`).then(msg => msg.delete(5000))];
-
-            if (!command.startsWith(prefix)) return;
-
-            let cmd = bot.commands.get(command.slice(prefix.length));
-            if (cmd) cmd.run(bot, message, args);
-   
-                    client.on("message", async message => {
-                        if (message.content === `${prefix}join`) {
-                            client.emit("guildMemberAdd", message.member);
-                            message.delete()
-                        }
+           
                     
-                    });
+                    
          })
     })
 
