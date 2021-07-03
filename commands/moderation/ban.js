@@ -23,7 +23,7 @@ module.exports = {
         let reason = args.slice(1).join(" ");
         //if (!reason) return message.channel.send("Input The Reason")
 
-        if (!reason) reason = "Punya Dosa Ga ada Akhlak Sih..";
+        if (!reason) reason = "You don't have akhlak..";
 
         const Embed = new MessageEmbed()
             .setDescription(stripIndents `
