@@ -24,6 +24,7 @@ module.exports = {
 
         const embed = new MessageEmbed()
         .setDescription("**Bot Desu Reminder**")
+        .setColor("RANDOM")
         .addField("**Message**", [
          `${reason}`,
 
