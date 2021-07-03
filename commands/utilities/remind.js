@@ -12,7 +12,6 @@ module.exports = {
     let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
     let timeuser = args[0]
     let reason = args.slice(1).join("")
-    let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
     const avatar = message.author.displayAvatarURL({ size: 4096, dynamic: true });
 
 
