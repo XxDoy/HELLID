@@ -10,7 +10,7 @@ module.exports = {
     run: async(client, message, args) => {
     let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
     let timeuser = args[0]
-    let reason = args.slice(1).join("")
+    let reason = args.slice(1).join(" ")
     const avatar = message.author.displayAvatarURL({ size: 4096, dynamic: true });
 
 
@@ -25,7 +25,7 @@ module.exports = {
         .setDescription("**Bot Desu Reminder**")
         .setColor("RANDOM")
         .addField("**Message**", [
-         `${reason}`,
+         `${reason}\n`,
 
          `**Time**\n ${timeuser}`
         ])
