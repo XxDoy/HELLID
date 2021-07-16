@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js')
+const msg = require("../moderation/msg")
 
 module.exports = {
     name: "ping",
