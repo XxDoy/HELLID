@@ -19,13 +19,13 @@ const msg1 = new MessageEmbed() .setDescription("**Loading...**")
 const msg2 = new MessageEmbed() .setDescription("**loading....**")
 const msg3 = new MessageEmbed() .setDescription("**Loading.....**")
 const msg4 = new MessageEmbed() .setDescription("**Done**")  
-setTimeout(() => { const msg5 = new MessageEmbed() .setColor('RANDOM') .setTitle(`${message.author.username}`) .setDescription('**Successfully Verified!!**') .setThumbnail(avatar) .setTimestamp() .setFooter(`${message.author.username}`); }, 2000)
+const msg5 = new MessageEmbed() .setColor('RANDOM') .setTitle(`${message.author.username}`) .setDescription('**Successfully Verified!!**') .setThumbnail(avatar) .setTimestamp() .setFooter(`${message.author.username}`);
             var Msg1 = await message.channel.send(mgs); // sends message
             Msg1.edit(msg1) 
             Msg1.edit(msg2)
             Msg1.edit(msg3)
             Msg1.edit(msg4)
-            setTimeout(() => { Msg1.edit(msg5).then(() => message.author.send(msg5)) }, 2000)
+            Msg1.edit(msg5).then(() => message.author.send(msg5))
             message.delete 
 return;
     
