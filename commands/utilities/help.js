@@ -13,7 +13,7 @@ module.exports = {
 
                 let embed = new MessageEmbed()
                 .setTitle('Help Menu')
-                .setAuthor(`${message.guild.name}`)
+                .setAuthor(`${client.user.username}`)
                 .addFields({
                     name: "Administrator ",
                     value: '`ban` | `kick` | `warn` | `mute` | `warnings` | `unban` | `deletewarns` | `unmute` | `clear` ',
