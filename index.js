@@ -42,10 +42,12 @@ config({
 client.on("ready", () => {
     console.log(`Bot Ready Up \n1 \n2 \n3 \nReady To Duty ${client.user.username} !`);
 
-
+    const memcount = memberCollection.filter(member => {
+        return member.presence.status === 'online'
+    }).size;
 
     let statuses = [
-        `h?help | SUBSCRIBE Ridho Revaldy Channels`,
+        `h?help | ${memcount} Member Online`,
         `h?help | Follow @zz_rdh on Instagram`
     ];
 
@@ -63,38 +65,30 @@ client.on("ready", () => {
         let data = await canva.welcome(member, { link: 'https://wallpapercave.com/wp/wp5128415.jpg', blur:  true})
         const canvas = Canvas.createCanvas(900, 250);
         const ctx = canvas.getContext('2d');
-        
-            
             const background = await Canvas.loadImage('./background.jpg')
-            ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-            
+            ctx.drawImage(background, 0, 0, canvas.width, canvas.height);      
             ctx.strokeStyle = '#74037b';
             ctx.strokeRect(0, 0, canvas.width, canvas.height);
-
             ctx.font = '30px sans-serif';
             ctx.fillStyle = '#ffffff';
             ctx.fillText(`${member.guild.memberCount}`, canvas.width / 2.5, canvas.height / 3.1);
-
             ctx.font = '40px sans-serif';
             ctx.fillStyle = '#ffffff';
-            ctx.fillText(member.displayName, canvas.width / 2.5, canvas.height / 1.8);
-            
+            ctx.fillText(member.displayName, canvas.width / 2.5, canvas.height / 1.8);          
             ctx.beginPath()
             ctx.arc(125, 125, 100, 0, Math.PI * 2, true)
             ctx.closePath()
             ctx.clip()
             const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
-            ctx.drawImage(avatar, 25, 25, 200, 200);
-            
+            ctx.drawImage(avatar, 25, 25, 200, 200);         
             const attachment = new MessageAttachment(
                 data,
                 "welcome-image.png"
-            );
-            
+            ); 
             const embed = new MessageEmbed()
                         .setColor("RANDOM")
                         .setAuthor(member.user.username, member.user.avatarURL())
-                        .setDescription(`**DOYLAND** ━━━━━━━━━━━|\n\nHello <@${member.user.id}>\n\nWelcome To **${member.guild.name}**\n━━━━━━━━━━━━━━━━━━━\n\nDon\'t Forget To Read :\n<#824923025324769280>\n━━━━━━━━━━━━━━━━━━━\n\nDon\'t Forget To Take Roles :\n<#824923138021130260>\n━━━━━━━━━━━━━━━━━━━\n\n Don\'t Forget To Intro In :\n<#824923086234976257>\n━━━━━━━━━━━━━━━━━━━`)
+                        .setDescription(`**${member.guild.name}** ━━━━━━━━━━━|\n\nHello <@${member.user.id}>\n\nWelcome To This Server\n━━━━━━━━━━━━━━━━━━━\n\nDon\'t Forget To Read :\n<#824923025324769280>\n━━━━━━━━━━━━━━━━━━━\n\nDon\'t Forget To Take Roles :\n<#824923138021130260>\n━━━━━━━━━━━━━━━━━━━\n\n Don\'t Forget To Intro In :\n<#824923086234976257>\n━━━━━━━━━━━━━━━━━━━`)
                         .setImage("attachment://welcome-image.png")
                         .attachFiles(attachment)
                         .setTimestamp()
@@ -165,7 +159,7 @@ client.on("ready", () => {
                     setTimeout(() => {
                         message.member.roles.remove(role);
                         message.reply('Kamu Telah Dibangkitkan.');
-                    }, TIME);
+                    }, 10000);
                 } else {
                     userData.msgCount = msgCount;
                     usersMap.set(message.author.id, userData);
@@ -200,56 +194,6 @@ client.on("ready", () => {
               }
             })
             });
-
-            client.on("message", async message => {
-                if(message.author.bot || message.channel.type === "dm") return;
-            
-                let messageArray = message.content.split(" ");
-                let cmd = messageArray[0];
-                let args = message.content.substring(message.content.indexOf(' ')+1);
-            
-                if (cmd === '?subs'){
-                    let youtubechannelurl = 'http://youtube.com/dashcraft123';
-                    let response = await request(youtubechannelurl)
-                    let $ = cheerio.load(response)
-                    let subscriberCount = $('[class="yt-subscription-button-subscriber-count-branded-horizontal subscribed yt-uix-tooltip"]').attr('title');
-                    message.reply(`DashCraft Has ${subscriberCount} on YouTube!`)
-                }
-            })
-
-            client.afk = new Map();
-            client.on("message", async message => {
-                if (message.author.bot) return;
-                if (message.channel.type === "dm") return;
-    
-                let prefix = config.prefix;
-                let messageArray = message.content.split(" ");
-                let command = messageArray[0].toLowerCase();
-                let args = messageArray.slice(1);
-    
-                // return message.channel.send(`**${user_tag}** is currently afk. Reason: ${key.reason}`);
-                // return message.reply(`you have been removed from the afk list!`).then(msg => msg.delete(5000));
-    
-                if (message.content.includes(message.mentions.members.first())) {
-                    let mentioned = client.afk.get(message.mentions.users.first().id);
-                    if (mentioned) message.channel.send(`**${mentioned.usertag}** is currently afk. Reason: ${mentioned.reason}`);
-                }
-                let afkcheck = client.afk.get(message.author.id);
-                if (afkcheck) return [client.afk.delete(message.author.id), message.reply(`you have been removed from the afk list!`).then(msg => msg.delete(5000))];
-    
-                if (!command.startsWith(prefix)) return;
-    
-                let cmd = bot.commands.get(command.slice(prefix.length));
-                if (cmd) cmd.run(bot, message, args);
-       
-                        client.on("message", async message => {
-                            if (message.content === `${prefix}join`) {
-                                client.emit("guildMemberAdd", message.member);
-                                message.delete()
-                            }
-                        });
-             })
-    
     
 
 // jangan pernah naruh command atau apapun dibawah ini karena script ini menentukan antar file jadi wajib diatas biar berfungsi
@@ -271,23 +215,6 @@ client.on("ready", () => {
         if (command)
             command.run(client, message, args);
 
-        client.afk = new Map();
-        client.on("message", async message => {
-            if (message.author.bot) return;
-            if (message.channel.type === "afk") return;
-
-            let prefix = config.prefix;
-            let messageArray = message.content.split(" ");
-            let command = messageArray[0].toLowerCase();
-            let args = messageArray.slice(1);
-
-            // return message.channel.send(`**${user_tag}** is currently afk. Reason: ${key.reason}`);
-            // return message.reply(`you have been removed from the afk list!`).then(msg => msg.delete(5000));
-
-           
-                    
-                    
-         })
     })
 
 
