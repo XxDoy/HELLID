@@ -42,9 +42,7 @@ config({
 client.on("ready", () => {
     console.log(`Bot Ready Up \n1 \n2 \n3 \nReady To Duty ${client.user.username} !`);
 
-    const memcount = memberCollection.filter(member => {
-        return member.presence.status === 'online'
-    }).size;
+    const memcount = `${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)}`
 
     let statuses = [
         `h?help | ${memcount} Member Online`,
