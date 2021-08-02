@@ -131,53 +131,6 @@ client.on("ready", () => {
             
         //     Channels.send(`<@${member.user.id}> WOKEH KEMBALI LAGI`,embed)
         //     })
-            
-    client.on('message', message => {
-        if (message.author.bot) return;
-        if (usersMap.has(message.author.id)) {
-            const userData = usersMap.get(message.author.id);
-            const { lastMessage, timer } = userData;
-            const difference = message.createdTimestamp - lastMessage.createdTimestamp;
-            let msgCount = userData.msgCount;
-            console.log(difference);
-            if (difference > DIFF) {
-                clearTimeout(timer);
-                console.log('Cleared timeout');
-                userData.msgCount = 1;
-                userData.lastMessage = message;
-                userData.timer = setTimeout(() => {
-                    usersMap.delete(message.author.id);
-                    console.log('Removed from RESET.');
-                }, TIME);
-                usersMap.set(message.author.id, userData);
-            } else {
-                ++msgCount;
-                if (parseInt(msgCount) === LIMIT) {
-                    const role = message.guild.roles.cache.get('752350200550522883');
-                    message.member.roles.add(role);
-                    message.reply('kamu Telah Dibunuh.');
-                    setTimeout(() => {
-                        message.member.roles.remove(role);
-                        message.reply('Kamu Telah Dibangkitkan.');
-                    }, 10000);
-                } else {
-                    userData.msgCount = msgCount;
-                    usersMap.set(message.author.id, userData);
-                }
-            }
-        } else {
-            let fn = setTimeout(() => {
-                usersMap.delete(message.author.id);
-                console.log('Removed from map.');
-            }, TIME);
-            usersMap.set(message.author.id, {
-                msgCount: 1,
-                lastMessage: message,
-                timer: fn
-            });
-        }
-    });
-
     
             client.on('message', async message =>{
               if(message.content === `${prefix}testmasuk`){

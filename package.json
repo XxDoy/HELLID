@@ -18,7 +18,7 @@
     "cheerio": "^0.20.0",
     "cheero": "^0.0.1",
     "common-tags": "^1.8.0",
-    "discord.js": "^12.5.1",
+    "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
     "figlet": "^1.5.0",
     "fs": "0.0.1-security",
