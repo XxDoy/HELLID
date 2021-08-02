@@ -25,8 +25,10 @@ module.exports = {
             );
             await message.channel
             .bulkDelete(parseInt(args[0]) + 1)
-            .catch((err) => console.log(err));
-            message.channel.send("Deleted " + args[0] + " messages.")
+            .catch((err) => console.log(err))
+            let m = await message.channel.send("Deleted " + args[0] + " messages.")
+                    m.delete({timeout : 3500})
+
     }
         
 
