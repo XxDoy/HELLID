@@ -1,6 +1,6 @@
 const { Client, MessageEmbed, MessageAttachment, Collection } = require('discord.js');
 const { discord, Discord } = require('discord.js');
-const { config } = require('dotenv');
+const { config } = require('dotenv')
 const Canvas = require('canvas');
 const { resolve, join } = require('path')
 const { get } = require('snekfetch')
@@ -19,8 +19,6 @@ const DIFF = 3000;
 const currentDate = new Date();
 const request = require('request-promise');
 const cheerio = require('cheerio');
-const firstMessage = require('./firstmessage')
-const memberCounter = require('./memcounter')
 
 const client = new Client({
     disableEveryone: true
